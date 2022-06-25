@@ -1,4 +1,5 @@
-﻿using System;
+﻿using praktApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,12 @@ namespace praktApp.Views
         public glossaryPage()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnAppearing()
+        {
+            collectionWordView.ItemsSource = App.PraktDB.GetWordAsync().Result.Where(p => p.Category.MessageFileId == 1).ToList();
+            base.OnAppearing();
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)

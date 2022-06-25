@@ -1,11 +1,11 @@
-﻿using Android.OS;
-using AndroidX.RecyclerView.Widget;
+﻿
+using praktApp.Data;
+using praktApp.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,9 +18,28 @@ namespace praktApp.Views
         {
             InitializeComponent();
         }
-        public void OnCreate(Bundle bundle)
+
+
+        protected override async void OnAppearing()
         {
-            
+            collectionCategoryView.ItemsSource = await App.PraktDB.GetCategoryAsync();
+            base.OnAppearing();
+        }
+
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            Category currentCategory = (sender as CheckBox).BindingContext as Category;
+            if (currentCategory == null)
+                return;
+            if ((sender as CheckBox).IsChecked)
+            {
+                App.SaveChangedCategory.categories[currentCategory.Id-1] = true;
+            }
+            else
+            {
+                App.SaveChangedCategory.categories[currentCategory.Id-1] = false;
+            }
+            SaveClass.serialize();
         }
     }
 }

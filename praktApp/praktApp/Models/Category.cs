@@ -20,5 +20,16 @@ namespace praktApp.Models
         public User User { get; set; }
         [OneToMany(CascadeOperations = CascadeOperation.CascadeDelete)]
         public List<Word> Words { get; set; }
+
+        public int MessageFileId
+        {
+            get
+            {
+                if (App.SaveChangedCategory.categories[Id-1])
+                    return 1;
+                return 0;
+            }
+        }
+
     }
 }

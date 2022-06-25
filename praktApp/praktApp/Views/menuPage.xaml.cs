@@ -18,12 +18,9 @@ namespace praktApp.Views
             InitializeComponent();
         }
 
-        protected override async void OnAppearing()
-        {
-            List<Category> category = await App.PraktDB.GetCategoryAsync();
-        }
+        
 
-        private void Switch_Toggled(object sender, ToggledEventArgs e)
+    private void Switch_Toggled(object sender, ToggledEventArgs e)
         {
 
         }

@@ -11,6 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Save.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Data\Save.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
     <PackageReference Include="SQLiteNetExtensions.Async" Version="2.1.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
@@ -24,6 +32,11 @@
     <Reference Include="Xamarin.AndroidX.RecyclerView">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Microsoft\Xamarin\NuGet\xamarin.androidx.recyclerview\1.1.0.6\lib\monoandroid90\Xamarin.AndroidX.RecyclerView.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Data\Save.cs" />
+    <Resource Include="Data\Save.xml" />
   </ItemGroup>
 
   <ItemGroup>

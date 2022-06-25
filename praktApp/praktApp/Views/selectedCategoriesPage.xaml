@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="praktApp.Views.selectedCategoriesPage">
+   
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Выбранные категории" Order="Primary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar Placeholder="Искать слова..." PlaceholderColor="LightGray" FontSize="16">
+            </SearchBar>
+            <ScrollView>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15"/><!--это столбик первый для отступа от левого края-->
+                        <ColumnDefinition Width="*"/><!--это столбик в котором будут названия категорий-->
+                        <ColumnDefinition Width="70"/><!--это столбик для чекбоксав-->
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Frame Grid.Row="0" Grid.Column="1">
+                        <Label Text="Категория 1" FontSize="16"/>
+                    </Frame>
+                    <Frame Grid.Row="0" Grid.Column="2">
+                        <CheckBox HorizontalOptions="End" Color="MediumPurple" Grid.Column="2"/>
+                    </Frame>
+                    
+                    <Frame Grid.Row="1" Grid.Column="1">
+                        <Label Text="Категория 2" FontSize="16"/>
+                    </Frame>
+                    <Frame Grid.Row="1" Grid.Column="2">
+                        <CheckBox HorizontalOptions="End" Color="MediumPurple"/>
+                    </Frame>
+
+                    <Frame Grid.Row="2" Grid.Column="1">
+                        <Label Text="Категория 2" FontSize="16"/>
+                    </Frame>
+                    <Frame Grid.Row="2" Grid.Column="2">
+                        <CheckBox HorizontalOptions="End" Color="MediumPurple"/>
+                    </Frame>
+
+                    <Frame Grid.Row="3" Grid.Column="1">
+                        <Label Text="Категория 2" FontSize="16"/>
+                    </Frame>
+                    <Frame Grid.Row="3" Grid.Column="2">
+                        <CheckBox HorizontalOptions="End" Color="MediumPurple"/>
+                    </Frame>
+
+                    <Frame Grid.Row="4" Grid.Column="1">
+                        <Label Text="Категория 2" FontSize="16"/>
+                    </Frame>
+                    <Frame Grid.Row="4" Grid.Column="2">
+                        <CheckBox HorizontalOptions="End" Color="MediumPurple"/>
+                    </Frame>
+
+                    <Frame Grid.Row="5" Grid.Column="1">
+                        <Label Text="Категория 2" FontSize="16"/>
+                    </Frame>
+                    <Frame Grid.Row="5" Grid.Column="2">
+                        <CheckBox HorizontalOptions="End" Color="MediumPurple"/>
+                    </Frame>
+
+                    <Frame Grid.Row="6" Grid.Column="1">
+                        <Label Text="Категория 2" FontSize="16"/>
+                    </Frame>
+                    <Frame Grid.Row="6" Grid.Column="2">
+                        <CheckBox HorizontalOptions="End" Color="MediumPurple"/>
+                    </Frame>
+
+                    <Frame Grid.Row="7" Grid.Column="1">
+                        <Label Text="Категория 2" FontSize="16"/>
+                    </Frame>
+                    <Frame Grid.Row="7" Grid.Column="2">
+                        <CheckBox HorizontalOptions="End" Color="MediumPurple"/>
+                    </Frame>
+
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

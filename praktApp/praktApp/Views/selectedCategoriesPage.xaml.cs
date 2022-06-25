@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Android.OS;
+using AndroidX.RecyclerView.Widget;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,16 +12,15 @@ using Xamarin.Forms.Xaml;
 namespace praktApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class studyPage : ContentPage
+    public partial class selectedCategoriesPage : ContentPage
     {
-        public studyPage()
+        public selectedCategoriesPage()
         {
             InitializeComponent();
         }
-
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        public void OnCreate(Bundle bundle)
         {
-            await Navigation.PushAsync(new selectedCategoriesPage());
+            
         }
     }
 }

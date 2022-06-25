@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="praktApp.Views.menuPage">
+             x:Class="praktApp.Views.menuPage" BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
             <Image Source="profile.jpg" Margin="0, 20, 0, 0" HorizontalOptions="Center" WidthRequest="50" HeightRequest="50">
@@ -22,6 +22,9 @@
             </Frame>
             <Frame CornerRadius="10" Margin="10, 0, 10, 0" BackgroundColor="GhostWhite" BorderColor="Gray">
                 <StackLayout Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </StackLayout.GestureRecognizers>
                     <Image Source="settings.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
                     <Label Text="Настройки" FontSize="16"/>
                 </StackLayout>

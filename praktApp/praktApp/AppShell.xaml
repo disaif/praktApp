@@ -14,11 +14,14 @@
         </ResourceDictionary>
     </Shell.Resources>
     <TabBar>
-        <ShellContent Title="Учить" Icon="icon_study.png" ContentTemplate="{DataTemplate views:studyPage}">
-        </ShellContent>
-        <ShellContent Title="Словарь" Icon="icon_book.png" ContentTemplate="{DataTemplate views:glossaryPage}">
-        </ShellContent>
-        <ShellContent Title="Меню" Icon="icon_menu.png" ContentTemplate="{DataTemplate views:menuPage}">
-        </ShellContent>
+        <Tab Title="Учить" Icon="icon_study.png">
+            <ShellContent ContentTemplate="{DataTemplate views:studyPage}"/>
+        </Tab>
+        <Tab Title="Словарь" Icon="icon_book.png">
+            <ShellContent ContentTemplate="{DataTemplate views:glossaryPage}"/>
+        </Tab>
+        <Tab Title="Меню" Icon="icon_menu.png">
+            <ShellContent ContentTemplate="{DataTemplate views:menuPage}"/>
+        </Tab>
     </TabBar>
 </Shell>

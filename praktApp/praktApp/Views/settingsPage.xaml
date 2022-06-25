@@ -6,8 +6,24 @@
         <ToolbarItem Text="Настройки" Priority="0" Order="Primary"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout >
-            
+        <StackLayout>
+            <StackLayout>
+                <Frame>
+                    <Label Text="Электронная почта" FontSize="16" Margin="15, 0, 0, 0"/>
+                </Frame>
+                <Frame>
+                    <Label Text="Имя пользователя" FontSize="16" Margin="15, 0, 0, 0"/>
+                </Frame>
+                <Frame>
+                    <Label Text="Изменить пароль" FontSize="16" Margin="15, 0, 0, 0"/>
+                </Frame>
+                <Frame>
+                    <Label Text="Уведомления" FontSize="16" Margin="15, 0, 0, 0"/>
+                </Frame>
+                <Frame>
+                    <Label Text="Ночной фон" FontSize="16" Margin="15, 0, 0, 0"/>
+                </Frame>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

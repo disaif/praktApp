@@ -39,7 +39,7 @@ namespace praktApp.Views
             {
                 App.SaveChangedCategory.categories[currentCategory.Id-1] = false;
             }
-            SaveClass.serialize();
+            SaveClass.serialize(SaveClass.pathChCa);
         }
     }
 }

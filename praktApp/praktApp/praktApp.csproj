@@ -15,7 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Data\ava.jpg" />
     <None Remove="Data\Save.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\ava.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +47,9 @@
   <ItemGroup>
     <EmbeddedResource Update="AppShell.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AutorizationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\glossaryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

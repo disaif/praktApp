@@ -13,6 +13,7 @@ namespace praktApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class glossaryPage : ContentPage
     {
+        private List<Word> words;
         public glossaryPage()
         {
             InitializeComponent();
@@ -20,13 +21,32 @@ namespace praktApp.Views
 
         protected override async void OnAppearing()
         {
-            collectionWordView.ItemsSource = App.PraktDB.GetWordAsync().Result.Where(p => p.Category.MessageFileId == 1).ToList();
-            base.OnAppearing();
+            try
+            {
+                if (App.SaveChangedCategory.categories.Length == 0)
+                    return;
+                words = App.PraktDB.GetWordAsync().Result.Where(p => p.Category.MessageFileId == 1).ToList();
+                collectionWordView.ItemsSource = words;
+                base.OnAppearing();
+            }
+            catch
+            {
+
+            }
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
+            try
+            {
+                if (App.SaveChangedCategory.categories.Length == 0)
+                    return;
+                collectionWordView.ItemsSource = words.Where(p => p.Term.ToLower().Contains(SearchTB.Text.ToLower()) || p.Category.Name.ToLower().Contains(SearchTB.Text.ToLower()) || p.Translation.ToLower().Contains(SearchTB.Text.ToLower()));
+            }
+            catch
+            {
 
+            }
         }
     }
 }

@@ -16,17 +16,25 @@ namespace praktApp.Data
     public class SaveClass
     {
         public static readonly string pathChCa = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SaveFileChCa.json");
+        public static readonly string pathCurUser = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SaveFileCurUser.json");
 
 
-
-        public static void serialize()
+        public static void serialize(string path)
         {
-            File.WriteAllText(pathChCa, JsonConvert.SerializeObject(App.SaveChangedCategory));
+            
+
+            if (path == pathChCa)
+                File.WriteAllText(path, JsonConvert.SerializeObject(App.SaveChangedCategory));
+            if (path == pathCurUser)
+                File.WriteAllText(path, JsonConvert.SerializeObject(App.CurrentUser));
         }
 
-        public static void deserialize()
+        public static void deserialize(string path)
         {
-            App.SaveChangedCategory = JsonConvert.DeserializeObject<SaveChangedCategory>(File.ReadAllText(pathChCa));
+            if(path==pathChCa)
+            App.SaveChangedCategory = JsonConvert.DeserializeObject<SaveChangedCategory>(File.ReadAllText(path));
+            if(path==pathCurUser)
+                App.CurrentUser = JsonConvert.DeserializeObject<User>(File.ReadAllText(path));
         }
     }
 }

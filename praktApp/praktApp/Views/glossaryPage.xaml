@@ -4,7 +4,7 @@
              x:Class="praktApp.Views.glossaryPage" BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar Placeholder="Искать слова..." PlaceholderColor="LightGray" FontSize="16" TextChanged="SearchBar_TextChanged">
+            <SearchBar Placeholder="Искать слова..." x:Name="SearchTB" PlaceholderColor="LightGray" FontSize="16" TextChanged="SearchBar_TextChanged">
             </SearchBar>
             
             <CollectionView x:Name="collectionWordView" Margin="20" SelectionMode="Single">

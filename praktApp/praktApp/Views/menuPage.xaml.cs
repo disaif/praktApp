@@ -18,15 +18,6 @@ namespace praktApp.Views
         public menuPage()
         {
             InitializeComponent();
-            switch (Settings.Theme)
-            {
-                case 0: BtnSwitch.IsToggled = false;
-                    break;
-                case 1: BtnSwitch.IsToggled = false;
-                    break;
-                case 2: BtnSwitch.IsToggled = true;
-                    break;
-            }
         }
         bool loaded;
    
@@ -57,12 +48,6 @@ namespace praktApp.Views
 
         void BtnSwitch_Toggled(object sender, ToggledEventArgs e)
         {
-            if (!loaded)
-                return;
-            if (!e.Value)
-                return;
-            var val = (sender as Switch)?.Value as string;
-            if(string i)
 
         }
     }

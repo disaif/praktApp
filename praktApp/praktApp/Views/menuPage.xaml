@@ -23,9 +23,6 @@
                       RadioButtonGroup.GroupName="ThemeGroup"
                       RowDefinitions="auto, auto"
                       RowSpacing="10">
-                    <RadioButton
-                        x:Name=""/>
-
                 </Grid>
                 
             </Frame>

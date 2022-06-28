@@ -14,17 +14,22 @@ namespace praktApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class menuPage : ContentPage
     {
+        public static bool swbtn = false;
         public menuPage()
         {
             InitializeComponent();
+            switch (Settings.Theme)
+            {
+                case 0: BtnSwitch.IsToggled = false;
+                    break;
+                case 1: BtnSwitch.IsToggled = false;
+                    break;
+                case 2: BtnSwitch.IsToggled = true;
+                    break;
+            }
         }
-
-        
-
-    private void Switch_Toggled(object sender, ToggledEventArgs e)
-        {
-
-        }
+        bool loaded;
+   
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new settingsPage());
@@ -46,6 +51,19 @@ namespace praktApp.Views
                 }
             }
             base.OnAppearing();
+
+            loaded = true;
+        }
+
+        void BtnSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (!loaded)
+                return;
+            if (!e.Value)
+                return;
+            var val = (sender as Switch)?.Value as string;
+            if(string i)
+
         }
     }
 }

@@ -41,5 +41,6 @@ namespace praktApp.Views
             }
             SaveClass.serialize(SaveClass.pathChCa);
         }
+
     }
 }

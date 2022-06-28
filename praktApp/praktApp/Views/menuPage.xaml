@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="praktApp.Views.menuPage" BackgroundColor="White">
+             x:Class="praktApp.Views.menuPage"
+             Title="Menu"
+             BackgroundColor="{AppThemeBinding
+                                       Dark={StaticResource DBackgroundColor},
+                                       Light={StaticResource LBackgroundColor}}">
     <ContentPage.Content>
         <StackLayout>
             <Image Source="profile.png" Margin="0, -10, 0, -20"  HorizontalOptions="Center" x:Name="ImageU" WidthRequest="200" HeightRequest="200">
@@ -12,36 +16,38 @@
                     RadiusY="60"/>
                 </Image.Clip>
             </Image>
-            <Button Text="войти" Clicked="Button_Clicked" HorizontalOptions="Center" FontSize="14" WidthRequest="80" HeightRequest="40" BackgroundColor="White" CornerRadius="10" BorderColor="LightGray" BorderWidth="1"></Button>
-            <Frame CornerRadius="10" Margin="10, 30, 10, 0" BackgroundColor="GhostWhite" BorderColor="Gray">
-                <Grid>
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="night.png" WidthRequest="20" HeightRequest="20" Margin="0, 0, 10, 0"/>
-                        <Label Text="Ночной режим" FontSize="16" Margin="0, 0, 10, 0"></Label>
-                    </StackLayout>
-                    <Switch IsToggled="False" Toggled="Switch_Toggled" HorizontalOptions="End" OnColor="MidnightBlue"></Switch>
+            <Button Text="войти" Clicked="Button_Clicked" HorizontalOptions="Center" WidthRequest="80" HeightRequest="40" BackgroundColor="White" BorderWidth="1"></Button>
+            <Frame Margin="10, 30, 10, 0">
+                <Grid ColumnDefinitions="*, auto, auto, auto"
+                      ColumnSpacing="10"
+                      RadioButtonGroup.GroupName="ThemeGroup"
+                      RowDefinitions="auto, auto"
+                      RowSpacing="10">
+                    <RadioButton
+                        x:Name=""/>
+
                 </Grid>
                 
             </Frame>
-            <Frame CornerRadius="10" Margin="10, 0, 10, 0" BackgroundColor="GhostWhite" BorderColor="Gray">
+            <Frame Margin="10, 0, 10, 0">
                 <StackLayout Orientation="Horizontal">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </StackLayout.GestureRecognizers>
                     <Image Source="settings.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
-                    <Label Text="Настройки" FontSize="16"/>
+                    <Label Text="Настройки"/>
                 </StackLayout>
             </Frame>
-            <Frame CornerRadius="10" Margin="10, 0, 10, 0" BackgroundColor="GhostWhite" BorderColor="Gray">
+            <Frame Margin="10, 0, 10, 0">
                 <StackLayout Orientation="Horizontal">
                     <Image Source="share.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
-                    <Label Text="Поделиться" FontSize="16"/>
+                    <Label Text="Поделиться"/>
                 </StackLayout>
             </Frame>
-            <Frame CornerRadius="10" Margin="10, 0, 10, 0" BackgroundColor="GhostWhite" BorderColor="Gray">
+            <Frame Margin="10, 0, 10, 0">
                 <StackLayout Orientation="Horizontal">
                     <Image Source="description.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
-                    <Label Text="О приложении" FontSize="16"/>
+                    <Label Text="О приложении"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

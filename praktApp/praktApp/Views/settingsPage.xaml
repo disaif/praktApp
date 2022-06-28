@@ -1,27 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="praktApp.Views.settingsPage">
+             x:Class="praktApp.Views.settingsPage"
+             BackgroundColor="{AppThemeBinding
+                                       Dark={StaticResource DBackgroundColor},
+                                       Light={StaticResource LBackgroundColor}}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Настройки" Priority="0" Order="Primary"/>
+        <ToolbarItem Text="Настройки"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
                 <Frame>
-                    <Label Text="Электронная почта" FontSize="16" Margin="15, 0, 0, 0"/>
+                    <Label Text="Электронная почта" Margin="15, 0, 0, 0"/>
                 </Frame>
                 <Frame>
-                    <Label Text="Имя пользователя" FontSize="16" Margin="15, 0, 0, 0"/>
+                    <Label Text="Имя пользователя" Margin="15, 0, 0, 0"/>
                 </Frame>
                 <Frame>
-                    <Label Text="Изменить пароль" FontSize="16" Margin="15, 0, 0, 0"/>
+                    <Label Text="Изменить пароль" Margin="15, 0, 0, 0"/>
                 </Frame>
                 <Frame>
-                    <Label Text="Уведомления" FontSize="16" Margin="15, 0, 0, 0"/>
+                    <Label Text="Уведомления" Margin="15, 0, 0, 0"/>
                 </Frame>
                 <Frame>
-                    <Label Text="Ночной фон" FontSize="16" Margin="15, 0, 0, 0"/>
+                    <Label Text="Ночной фон"  Margin="15, 0, 0, 0"/>
                 </Frame>
             </StackLayout>
         </StackLayout>

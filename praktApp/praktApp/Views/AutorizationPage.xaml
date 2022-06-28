@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="praktApp.Views.AutorizationPage">
+             x:Class="praktApp.Views.AutorizationPage"
+             BackgroundColor="{AppThemeBinding
+                                       Dark={StaticResource DBackgroundColor},
+                                       Light={StaticResource LBackgroundColor}}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Введите данные" Order="Primary" />
     </ContentPage.ToolbarItems>
@@ -9,7 +12,7 @@
         <StackLayout Spacing="10" Margin="10"  >
             <Entry Placeholder="Email" x:Name="EmailTB" TextChanged="EmailTB_TextChanged" />
             <Entry IsPassword="True" Placeholder="Пароль" x:Name="PasswordTB" TextChanged="PasswordTB_TextChanged"/>
-            <Button Text="Войти" CornerRadius="20" IsEnabled="False" x:Name="butEn" Clicked="butEn_Clicked">
+            <Button Text="Войти" IsEnabled="False" x:Name="butEn" Clicked="butEn_Clicked">
             </Button>
         </StackLayout>
     </ContentPage.Content>

@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="praktApp.Views.selectedCategoriesPage">
+             x:Class="praktApp.Views.selectedCategoriesPage"
+             BackgroundColor="{AppThemeBinding
+                                       Dark={StaticResource DBackgroundColor},
+                                       Light={StaticResource LBackgroundColor}}">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Все категории" Order="Primary"/>
     </ContentPage.ToolbarItems>
@@ -23,7 +26,7 @@
                                 </Grid.ColumnDefinitions>
                                 
                                 <Frame Grid.Row="0" Grid.Column="0"  Margin="10">
-                                    <Label Text="{Binding Name}" FontSize="16"/>
+                                    <Label Text="{Binding Name}"/>
                                 </Frame>
                                 <Frame Grid.Row="0" Grid.Column="1" Margin="0,10,10,10 ">
                                     <CheckBox HorizontalOptions="Center" x:Name="checkboxCV" Color="MediumPurple" VerticalOptions="Center" Grid.Column="2" CheckedChanged="CheckBox_CheckedChanged">

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="praktApp.Views.menuPage"
-             Title="Menu"
+             Title="Меню"
              BackgroundColor="{AppThemeBinding
                                        Dark={StaticResource DBackgroundColor},
                                        Light={StaticResource LBackgroundColor}}">
@@ -16,7 +16,7 @@
                     RadiusY="60"/>
                 </Image.Clip>
             </Image>
-            <Button Text="войти" Clicked="Button_Clicked" HorizontalOptions="Center" WidthRequest="80" HeightRequest="40" BackgroundColor="White" BorderWidth="1"></Button>
+            <Button Text="войти" Clicked="Button_Clicked" HorizontalOptions="Center" x:Name="ButEnt" WidthRequest="80" HeightRequest="40" BackgroundColor="White" BorderWidth="1"></Button>
             <Frame Margin="10, 30, 10, 0">
                 <Grid ColumnDefinitions="*, auto, auto, auto"
                       ColumnSpacing="10"

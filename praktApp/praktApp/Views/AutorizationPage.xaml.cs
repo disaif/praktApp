@@ -41,7 +41,7 @@ namespace praktApp.Views
                 return;
 
             SaveClass.serialize(SaveClass.pathCurUser);
-            await Navigation.PushAsync(new menuPage());
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

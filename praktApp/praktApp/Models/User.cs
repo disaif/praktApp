@@ -21,10 +21,9 @@ namespace praktApp.Models
         [OneToMany(CascadeOperations = CascadeOperation.CascadeDelete)]
         public List<Category> Categories { get; set; }
         public byte[] Photo { get; set; }
-
         [OneToMany(CascadeOperations = CascadeOperation.CascadeDelete)]
-        public List<Category> ChosingCategorits { get; set; }
+        public List<int> ChosingCategorits { get; set; }
         [OneToMany(CascadeOperations = CascadeOperation.CascadeDelete)]
-        public List<Category> StudedCategories { get; set; }
+        public List<int> StudedCategories { get; set; }
     }
 }

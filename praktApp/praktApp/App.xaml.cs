@@ -15,6 +15,7 @@ namespace praktApp
         static PraktDB praktDB;
 
         public static SaveChangedCategory SaveChangedCategory;
+        public static SaveStudedCategory SaveStudedCategory;
         public static User CurrentUser;
         public static PraktDB PraktDB
         {
@@ -42,30 +43,22 @@ namespace praktApp
 
             try
             {
-                if (File.Exists(SaveClass.pathChCa))
-                    SaveClass.deserialize(SaveClass.pathChCa);
-                else
-                    SaveChangedCategory = new SaveChangedCategory();
-
-                if (File.Exists(SaveClass.pathCurUser))
-                    SaveClass.deserialize(SaveClass.pathCurUser);
-                else
-                    CurrentUser = null;
-
                 if (App.PraktDB.GetCategoryAsync().Result.Count == 0)
                 {
-                    User user = new User() { email = "Nikitos613@mail.ru", nickname = "Ebola", password = "123", Photo = ImageDataFromResource("praktApp.Data.ava.jpg")};
+                    User user = new User() { email = "Nikitos613@mail.ru", nickname = "Ebola", password = "123", Photo = ImageDataFromResource("praktApp.Images.ava.jpg")};
                     PraktDB.SaveUserAsync(user);
 
                     Category categoryME = new Category() { IsPublic = true, Name = "Мэкэникал Инжинеринг" };
                     App.PraktDB.SaveCategoryAsync(categoryME).Wait();
                     categoryME = App.PraktDB.GetCategoryAsync().Result.Where(p => p.Name == categoryME.Name).FirstOrDefault();
                     List<Word> words = new List<Word>(){
-                    new Word() { Category = categoryME, CategoryId = categoryME.Id, Term = "involves", Translation = "включать"},
+                    new Word() { Category = categoryME, CategoryId = categoryME.Id, Term = "involves", Translation = "включать"}
+                    /*,
                     new Word() { Category = categoryME, CategoryId = categoryME.Id, Term = "maintence", Translation = "эксплуатация"},
                     new Word() { Category = categoryME, CategoryId = categoryME.Id, Term = "request", Translation = "требовать"},
                     new Word() { Category = categoryME, CategoryId = categoryME.Id, Term = "predict", Translation = "предсказывать"},
                     new Word() { Category = categoryME, CategoryId = categoryME.Id, Term = "employ", Translation = "использовать"},
+                    */
                     };
                     foreach (Word word in words)
                         App.PraktDB.SaveWordAsync(word);
@@ -86,9 +79,22 @@ namespace praktApp
                         App.PraktDB.SaveWordAsync(word);
                     categoryME.Words = words;
                     App.PraktDB.SaveCategoryAsync(categoryME);
-
-
                 }
+
+                if (File.Exists(SaveClass.pathChCa))
+                    SaveClass.deserialize(SaveClass.pathChCa);
+                else
+                    SaveChangedCategory = new SaveChangedCategory();
+
+                if (File.Exists(SaveClass.pathCurUser))
+                    SaveClass.deserialize(SaveClass.pathCurUser);
+                else
+                    CurrentUser = null;
+
+                if (File.Exists(SaveClass.pathStCa))
+                    SaveClass.deserialize(SaveClass.pathStCa);
+                else
+                    SaveStudedCategory = new SaveStudedCategory();
             }
             catch(Exception ex)
             {

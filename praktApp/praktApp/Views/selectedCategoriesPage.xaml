@@ -26,7 +26,10 @@
                                 </Grid.ColumnDefinitions>
                                 
                                 <Frame Grid.Row="0" Grid.Column="0"  Margin="10">
-                                    <Label Text="{Binding Name}"/>
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}"/>
+                                        <Label Text="{Binding IsStuded}" FontSize="12"/>
+                                    </StackLayout>
                                 </Frame>
                                 <Frame Grid.Row="0" Grid.Column="1" Margin="0,10,10,10 ">
                                     <CheckBox HorizontalOptions="Center" x:Name="checkboxCV" Color="MediumPurple" VerticalOptions="Center" Grid.Column="2" CheckedChanged="CheckBox_CheckedChanged">

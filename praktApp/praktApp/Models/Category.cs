@@ -30,6 +30,15 @@ namespace praktApp.Models
                 return 0;
             }
         }
+        public string IsStuded
+        {
+            get
+            {
+                if (App.SaveStudedCategory.categories.Contains(Id))
+                    return "(Изучено)";
+                return "(Не изучено)";
+            }
+        }
 
     }
 }

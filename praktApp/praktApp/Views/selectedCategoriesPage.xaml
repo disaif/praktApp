@@ -31,8 +31,11 @@
                                        BorderColor="{AppThemeBinding
                                        Dark={StaticResource DBorderColor},
                                        Light={StaticResource LBorderColor}}">
-                                    <Label Text="{Binding Name}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                                                                            Light={StaticResource LTextColor}}"/>
+                                    <StackLayout>
+                                        <Label Text="{Binding Name}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor}, Light={StaticResource LTextColor}}"/>
+                                        <Label Text="{Binding IsStuded}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor}, Light={StaticResource LTextColor}}" FontSize="12"/>
+                                    </StackLayout>
+                                    
                                 </Frame>
                                 <Frame Grid.Row="0" Grid.Column="1" Margin="0,10,10,10 " BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
                                                                                                                  Light={StaticResource LFrameColor}}"

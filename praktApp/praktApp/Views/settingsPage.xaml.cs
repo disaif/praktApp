@@ -17,7 +17,9 @@ namespace praktApp.Views
             InitializeComponent();
         }
 
-        
-       
+        private async void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new menuPage());
+        }
     }
 }

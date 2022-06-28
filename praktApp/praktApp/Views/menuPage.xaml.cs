@@ -35,7 +35,8 @@ namespace praktApp.Views
    
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new settingsPage());
+            var page = new NavigationPage(new settingsPage());
+            await Application.Current.MainPage.Navigation.PushModalAsync(page, true);
         }
 
         private async void Button_Clicked(object sender, EventArgs e)

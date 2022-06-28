@@ -15,6 +15,7 @@ namespace praktApp.Views
         public settingsPage()
         {
             InitializeComponent();
+            Shell.SetTabBarIsVisible(this, false);
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)

@@ -6,7 +6,6 @@
                                        Dark={StaticResource DBackgroundColor},
                                        Light={StaticResource LBackgroundColor}}">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Вернуться" Clicked="ToolbarItem_Clicked"/>
         <ToolbarItem Text="Настройки"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

@@ -9,10 +9,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
 
-            <Color x:Key="LightRadioButtonColor">#F3F2F1</Color>
-            <Color x:Key="DarkRadioButtonColor">#9B9A99</Color>
-
-
             <ControlTemplate x:Key="ThemeRadioTemplate">
                 <Frame
                     Padding="0"
@@ -131,7 +127,8 @@
                                             <Image WidthRequest="30" HeightRequest="25" Source="night.png" />
                                             <Label
                                                 FontSize="14"
-                                                Text="Системная"/>
+                                                Text="Системная"
+                                                />
                                         </StackLayout>
                                     </RadioButton.Content>
                                 </RadioButton>
@@ -205,8 +202,6 @@
                 </Frame>
             </StackLayout>
         </ScrollView>
-                </Image.Clip>
-            </Image>
             <Button Text="войти" Clicked="Button_Clicked" HorizontalOptions="Center" x:Name="ButEnt" WidthRequest="80" HeightRequest="40" BackgroundColor="White" BorderWidth="1"></Button>
             <Frame Margin="10, 30, 10, 0">
                 <Grid ColumnDefinitions="*, auto, auto, auto"

@@ -40,7 +40,7 @@
                                        Light={StaticResource LBorderColor}}">
                 <StackLayout Orientation="Horizontal">
                     <Image Source="settings.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
-                    <Label Text="Учебник" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                    <Label Text="Грамматика" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
                 </StackLayout>
             </Frame>

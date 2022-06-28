@@ -14,7 +14,6 @@ namespace testAnd
         public AppShell()
         {
             InitializeComponent();
-
         }
     }
 }

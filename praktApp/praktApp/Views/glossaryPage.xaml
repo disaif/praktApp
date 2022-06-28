@@ -17,14 +17,21 @@
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
-                            <Label Text="{Binding Category.Name}" HorizontalOptions="Center" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                        <Frame BorderColor="{AppThemeBinding
+                                       Dark={StaticResource DBorderColor},
+                                       Light={StaticResource LBorderColor}}"
+                               BackgroundColor="{AppThemeBinding
+                            Dark={StaticResource DFrameColor},
+                            Light={StaticResource LFrameColor}}">
+                            <StackLayout>
+                                <Label Text="{Binding Category.Name}" HorizontalOptions="Center" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
-                            <Label Text="{Binding Term}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                <Label Text="{Binding Term}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
-                            <Label Text="{Binding Translation}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                <Label Text="{Binding Translation}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
-                        </StackLayout>
+                            </StackLayout>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

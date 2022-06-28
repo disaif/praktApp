@@ -27,12 +27,18 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Frame Grid.Row="0" Grid.Column="0"  Margin="10" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                                                                                 Light={StaticResource LFrameColor}}">
+                                                                                                                 Light={StaticResource LFrameColor}}"
+                                       BorderColor="{AppThemeBinding
+                                       Dark={StaticResource DBorderColor},
+                                       Light={StaticResource LBorderColor}}">
                                     <Label Text="{Binding Name}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                                                             Light={StaticResource LTextColor}}"/>
                                 </Frame>
                                 <Frame Grid.Row="0" Grid.Column="1" Margin="0,10,10,10 " BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                                                                                 Light={StaticResource LFrameColor}}">
+                                                                                                                 Light={StaticResource LFrameColor}}"
+                                       BorderColor="{AppThemeBinding
+                                       Dark={StaticResource DBorderColor},
+                                       Light={StaticResource LBorderColor}}">
                                     <CheckBox HorizontalOptions="Center" x:Name="checkboxCV" Color="#DDA0DD" VerticalOptions="Center" Grid.Column="2" CheckedChanged="CheckBox_CheckedChanged">
                                         <CheckBox.Style>
                                             <Style TargetType="CheckBox">

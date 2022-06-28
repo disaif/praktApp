@@ -11,20 +11,30 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
-                <Frame>
-                    <Label Text="Электронная почта" Margin="15, 0, 0, 0"/>
+                <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                                         Light={StaticResource LFrameColor}}">
+                    <Label Text="Электронная почта" Margin="15, 0, 0, 0" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                                                            Light={StaticResource LTextColor}}"/>
                 </Frame>
-                <Frame>
-                    <Label Text="Имя пользователя" Margin="15, 0, 0, 0"/>
+                <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                                         Light={StaticResource LFrameColor}}">
+                    <Label Text="Имя пользователя" Margin="15, 0, 0, 0" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                                                            Light={StaticResource LTextColor}}"/>
                 </Frame>
-                <Frame>
-                    <Label Text="Изменить пароль" Margin="15, 0, 0, 0"/>
+                <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                                         Light={StaticResource LFrameColor}}">
+                    <Label Text="Изменить пароль" Margin="15, 0, 0, 0" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                                                            Light={StaticResource LTextColor}}"/>
                 </Frame>
-                <Frame>
-                    <Label Text="Уведомления" Margin="15, 0, 0, 0"/>
+                <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                                         Light={StaticResource LFrameColor}}">
+                    <Label Text="Уведомления" Margin="15, 0, 0, 0" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                                                            Light={StaticResource LTextColor}}"/>
                 </Frame>
-                <Frame>
-                    <Label Text="Ночной фон"  Margin="15, 0, 0, 0"/>
+                <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                                         Light={StaticResource LFrameColor}}">
+                    <Label Text="Ночной фон"  Margin="15, 0, 0, 0" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                                                            Light={StaticResource LTextColor}}"/>
                 </Frame>
             </StackLayout>
         </StackLayout>

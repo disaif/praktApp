@@ -10,8 +10,12 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Spacing="10" Margin="10"  >
-            <Entry Placeholder="Email" x:Name="EmailTB" TextChanged="EmailTB_TextChanged" />
-            <Entry IsPassword="True" Placeholder="Пароль" x:Name="PasswordTB" TextChanged="PasswordTB_TextChanged"/>
+            <Frame>
+                <Entry Placeholder="Email" x:Name="EmailTB" TextChanged="EmailTB_TextChanged" />
+            </Frame>
+            <Frame>
+                <Entry IsPassword="True" Placeholder="Пароль" x:Name="PasswordTB" TextChanged="PasswordTB_TextChanged" />
+            </Frame>
             <Button Text="Войти" IsEnabled="False" x:Name="butEn" Clicked="butEn_Clicked">
             </Button>
         </StackLayout>

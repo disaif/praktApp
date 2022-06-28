@@ -10,9 +10,31 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Spacing="10" Margin="10"  >
-            <Entry Placeholder="Email" x:Name="EmailTB" TextChanged="EmailTB_TextChanged" />
-            <Entry IsPassword="True" Placeholder="Пароль" x:Name="PasswordTB" TextChanged="PasswordTB_TextChanged"/>
-            <Button Text="Войти" IsEnabled="False" x:Name="butEn" Clicked="butEn_Clicked">
+            <Frame BorderColor="{AppThemeBinding
+                                       Dark={StaticResource DBorderColor},
+                                       Light={StaticResource LBorderColor}}"
+                   BackgroundColor="{AppThemeBinding
+                                       Dark={StaticResource DFrameColor},
+                                       Light={StaticResource LFrameColor}}">
+                <Entry Placeholder="Email" x:Name="EmailTB" TextChanged="EmailTB_TextChanged" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+            </Frame>
+            <Frame BorderColor="{AppThemeBinding
+                                       Dark={StaticResource DBorderColor},
+                                       Light={StaticResource LBorderColor}}"
+                BackgroundColor="{AppThemeBinding
+                                       Dark={StaticResource DFrameColor},
+                                       Light={StaticResource LFrameColor}}">
+                <Entry IsPassword="True" Placeholder="Пароль" x:Name="PasswordTB" TextChanged="PasswordTB_TextChanged" />
+            </Frame>
+            <Button Text="Войти" IsEnabled="False" x:Name="butEn" Clicked="butEn_Clicked"
+                    BackgroundColor="{AppThemeBinding
+                                       Dark={StaticResource DarkRadioButtonColor},
+                                       Light={StaticResource LightRadioButtonColor}}"
+                    BorderColor="{AppThemeBinding
+                                       Dark={StaticResource DBorderColor},
+                                       Light={StaticResource LBorderColor}}">
             </Button>
         </StackLayout>
     </ContentPage.Content>

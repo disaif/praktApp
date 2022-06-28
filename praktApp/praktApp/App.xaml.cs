@@ -1,5 +1,6 @@
 ﻿using praktApp.Data;
 using praktApp.Models;
+using praktApp.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using testAnd;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace praktApp
 {
@@ -31,7 +33,7 @@ namespace praktApp
         public App()
         {
             InitializeComponent();
-            
+            TheTheme.SetTheme();
             MainPage = new AppShell();
         }
 
@@ -99,6 +101,7 @@ namespace praktApp
             catch(Exception ex)
             {
             }
+            OnResume();
         }
 
         public byte[] ImageDataFromResource(string r)
@@ -122,10 +125,21 @@ namespace praktApp
 
         protected override void OnSleep()
         {
+            TheTheme.SetTheme();
+            RequestedThemeChanged -= App_RequestedThemeChanged;
         }
 
         protected override void OnResume()
         {
+            TheTheme.SetTheme();
+            RequestedThemeChanged += App_RequestedThemeChanged;
+        }
+        private void App_RequestedThemeChanged(object sender, AppThemeChangedEventArgs e)
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                TheTheme.SetTheme();
+            });
         }
     }
 }

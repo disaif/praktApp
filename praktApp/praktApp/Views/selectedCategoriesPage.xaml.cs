@@ -17,6 +17,7 @@ namespace praktApp.Views
         public selectedCategoriesPage()
         {
             InitializeComponent();
+            Shell.SetTabBarIsVisible(this, false);
         }
 
 

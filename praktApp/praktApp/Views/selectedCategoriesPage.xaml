@@ -10,7 +10,8 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar Placeholder="Искать категорию..." PlaceholderColor="LightGray" FontSize="16">
+            <SearchBar Placeholder="Искать категорию..." PlaceholderColor="LightGray" FontSize="16" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                                                                                                                       Light={StaticResource LFrameColor}}">
             </SearchBar>
             <ScrollView>
                 <CollectionView x:Name="collectionCategoryView" SelectionMode="Single">
@@ -24,15 +25,21 @@
                                     <ColumnDefinition Width="3*"/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                
-                                <Frame Grid.Row="0" Grid.Column="0"  Margin="10">
-                                    <StackLayout>
-                                        <Label Text="{Binding Name}"/>
-                                        <Label Text="{Binding IsStuded}" FontSize="12"/>
-                                    </StackLayout>
+
+                                <Frame Grid.Row="0" Grid.Column="0"  Margin="10" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                                                                                                 Light={StaticResource LFrameColor}}"
+                                       BorderColor="{AppThemeBinding
+                                       Dark={StaticResource DBorderColor},
+                                       Light={StaticResource LBorderColor}}">
+                                    <Label Text="{Binding Name}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                                                            Light={StaticResource LTextColor}}"/>
                                 </Frame>
-                                <Frame Grid.Row="0" Grid.Column="1" Margin="0,10,10,10 ">
-                                    <CheckBox HorizontalOptions="Center" x:Name="checkboxCV" Color="MediumPurple" VerticalOptions="Center" Grid.Column="2" CheckedChanged="CheckBox_CheckedChanged">
+                                <Frame Grid.Row="0" Grid.Column="1" Margin="0,10,10,10 " BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                                                                                                 Light={StaticResource LFrameColor}}"
+                                       BorderColor="{AppThemeBinding
+                                       Dark={StaticResource DBorderColor},
+                                       Light={StaticResource LBorderColor}}">
+                                    <CheckBox HorizontalOptions="Center" x:Name="checkboxCV" Color="#DDA0DD" VerticalOptions="Center" Grid.Column="2" CheckedChanged="CheckBox_CheckedChanged">
                                         <CheckBox.Style>
                                             <Style TargetType="CheckBox">
                                                 <Style.Triggers>

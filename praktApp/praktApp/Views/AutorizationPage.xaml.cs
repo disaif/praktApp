@@ -17,7 +17,7 @@ namespace praktApp.Views
         public AutorizationPage()
         {
             InitializeComponent();
-           
+            Shell.SetTabBarIsVisible(this, false);
         }
 
         private void EmailTB_TextChanged(object sender, TextChangedEventArgs e)

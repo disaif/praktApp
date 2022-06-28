@@ -13,7 +13,7 @@
             </Style>
         </ResourceDictionary>
     </Shell.Resources>
-    <TabBar>
+    <TabBar x:Name="TabSh">
         <Tab Title="Учить" Icon="icon_study.png">
             <ShellContent ContentTemplate="{DataTemplate views:studyPage}"/>
         </Tab>

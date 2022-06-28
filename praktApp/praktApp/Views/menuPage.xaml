@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="praktApp.Views.menuPage"
+             Title="Меню"
              BackgroundColor="{AppThemeBinding
                                        Dark={StaticResource DBackgroundColor},
                                        Light={StaticResource LBackgroundColor}}">
@@ -204,5 +205,39 @@
                 </Frame>
             </StackLayout>
         </ScrollView>
+                </Image.Clip>
+            </Image>
+            <Button Text="войти" Clicked="Button_Clicked" HorizontalOptions="Center" x:Name="ButEnt" WidthRequest="80" HeightRequest="40" BackgroundColor="White" BorderWidth="1"></Button>
+            <Frame Margin="10, 30, 10, 0">
+                <Grid ColumnDefinitions="*, auto, auto, auto"
+                      ColumnSpacing="10"
+                      RadioButtonGroup.GroupName="ThemeGroup"
+                      RowDefinitions="auto, auto"
+                      RowSpacing="10">
+                </Grid>
+                
+            </Frame>
+            <Frame Margin="10, 0, 10, 0">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                    <Image Source="settings.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
+                    <Label Text="Настройки"/>
+                </StackLayout>
+            </Frame>
+            <Frame Margin="10, 0, 10, 0">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="share.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
+                    <Label Text="Поделиться"/>
+                </StackLayout>
+            </Frame>
+            <Frame Margin="10, 0, 10, 0">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="description.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
+                    <Label Text="О приложении"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

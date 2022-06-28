@@ -17,10 +17,12 @@
   <ItemGroup>
     <None Remove="Data\ava.jpg" />
     <None Remove="Data\Save.xml" />
+    <None Remove="Images\profile.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Data\ava.jpg" />
+    <EmbeddedResource Include="Images\ava.jpg" />
+    <EmbeddedResource Include="Images\profile.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -67,6 +69,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\studyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\WordStudyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

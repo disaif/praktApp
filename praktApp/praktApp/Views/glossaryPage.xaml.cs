@@ -19,7 +19,7 @@ namespace praktApp.Views
             InitializeComponent();
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             try
             {

@@ -17,6 +17,7 @@ namespace praktApp.Data
         {
             db = new SQLiteAsyncConnection(connectionString);
 
+            
             db.CreateTableAsync<User>().Wait();
             db.CreateTableAsync<Category>().Wait();
             db.CreateTableAsync<Word>().Wait();

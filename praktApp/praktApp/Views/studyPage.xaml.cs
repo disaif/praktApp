@@ -25,5 +25,10 @@ namespace praktApp.Views
         {
             await Navigation.PushAsync(new WordStudyPage());
         }
+
+        private async void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new GrammarPage());
+        }
     }
 }

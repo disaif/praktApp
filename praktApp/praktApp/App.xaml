@@ -21,7 +21,10 @@
 
             <Color x:Key="LBackgroundColor">#FEFEFE</Color>
             <Color x:Key="DBackgroundColor">#252626</Color>
-            
+
+            <Color x:Key="LStackColor">LightCyan</Color>
+            <Color x:Key="DStackColor">#3D3D3D</Color>
+
             <Color x:Key="LTextColor">#151515</Color>
             <Color x:Key="DTextColor">#D6D6D6</Color>
 

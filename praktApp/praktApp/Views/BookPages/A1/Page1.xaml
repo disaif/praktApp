@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="praktApp.Views.BookPages.A1.Page1"
+             Title="Понятие об артикле"
+             BackgroundColor="{AppThemeBinding
+                                       Dark={StaticResource DBackgroundColor},
+                                       Light={StaticResource LBackgroundColor}}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Margin="5, 5, 5, 5" Text="    Артикль в английском языке - это слово, которое показывает - говорим ли мы о чем-то определенном или нет. В русском языке артиклей нет, поэтому просто перевести не получится." 
+                   TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                <Label Margin="5, 5, 5, 5" Text="    Всего в английском языке два артикля:" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                <Label Margin="5, 5, 5, 5" Text="a (an) - неопределенный;" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                <Label Margin="5, 5, 5, 5" Text="the - определенный;" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                <StackLayout BackgroundColor="LightCyan">
+                    <Label Text="Пример" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
+                    <Label Text="I want the apple" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
+                    <Label Text="Я хочу яблоко" FontSize="12" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
+                    <Label Text="I want an apple" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
+                    <Label Text="Я хочу яблоко" FontSize="12" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
+                </StackLayout>
+                <Label Margin="5, 5, 5, 5" Text="    Оба примера переводятся на русский одинаково, разница только в том, что в примере 1 - I want the apple мы имеем в виду какое-то конкретное яблоко, например яблоко, которое собеседник держит в руке. А в примере 2 - I want an apple мы имеем в виду какое-то неопределенное яблоко, любое." 
+                       TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                <Label Margin="5, 5, 5, 5" Text="    Когда 'a' и когда 'an'?" 
+                       TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                <Label Margin="5, 5, 5, 5" Text="    Если слово (существительное) начинается на гласную букву, то пишется 'an', если на согласную, то пишется 'a'." 
+                       TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                <StackLayout BackgroundColor="LightCyan">
+                    <Label Text="Пример" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
+                    <Label Text="a car - машина" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
+                    <Label Text="a table - стол" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
+                    <Label Text="an elephant - слон" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
+                    <Label Text="an orange - апельсин" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
+                </StackLayout>
+                <Label Margin="5, 5, 5, 5" Text="    Артикль НЕ ставится, если перед существительным стоит:" 
+                       TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                <Label Text="  1. числительное - two cats (две кошки);" 
+                       TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                <Label Text="  2. притяжательное местоимение - my cat (моя кошка);" 
+                       TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                <Label Text="  3. указательные местоимения this, that - этот, тот;" 
+                       TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                <Label Text="  4. отрицательная частица NO: I have no cat (у меня нет кошки)." 
+                       TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

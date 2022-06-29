@@ -1,34 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="praktApp.Views.GrammarPage">
+             x:Class="praktApp.Views.GrammarPage"
+             BackgroundColor="{AppThemeBinding Dark={StaticResource DBackgroundColor},
+                                                      Light={StaticResource LBackgroundColor}}">
     <ContentPage.Content>
-        <StackLayout>
-            <Frame>
+        <StackLayout Margin="10, 10, 10, 10">
+            <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                                      Light={StaticResource LFrameColor}}"
+                   BorderColor="{AppThemeBinding Dark={StaticResource DBorderColor},
+                                                      Light={StaticResource LBorderColor}}">
                 <StackLayout Orientation="Vertical">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </StackLayout.GestureRecognizers>
-                    <Label Text="A1 - Элементарный"/>
-                    <Label Text="19 тем" FontSize="12"/>
+                    <Label Text="A1 - Элементарный" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                      Light={StaticResource LTextColor}}"/>
+                    <Label Text="19 тем" FontSize="12" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                      Light={StaticResource LTextColor}}"/>
                 </StackLayout>
             </Frame>
-            <Frame>
+            <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                                      Light={StaticResource LFrameColor}}"
+                   BorderColor="{AppThemeBinding Dark={StaticResource DBorderColor},
+                                                      Light={StaticResource LBorderColor}}">
                 <StackLayout Orientation="Vertical">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                     </StackLayout.GestureRecognizers>
-                    <Label Text="A2 - Предпороговый"/>
-                    <Label Text="17 тем" FontSize="12"/>
+                    <Label Text="A2 - Предпороговый" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                      Light={StaticResource LTextColor}}"/>
+                    <Label Text="17 тем" FontSize="12" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                      Light={StaticResource LTextColor}}"/>
                 </StackLayout>
             </Frame>
-            <Frame>
+            <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                                      Light={StaticResource LFrameColor}}"
+                   BorderColor="{AppThemeBinding Dark={StaticResource DBorderColor},
+                                                      Light={StaticResource LBorderColor}}">
                 <StackLayout Orientation="Vertical">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
                     </StackLayout.GestureRecognizers>
-                    <Label Text="B1 - Средний"/>
-                    <Label Text="14 тем" FontSize="12"/>
+                    <Label Text="B1 - Средний" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                      Light={StaticResource LTextColor}}"/>
+                    <Label Text="13 тем" FontSize="12" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                      Light={StaticResource LTextColor}}"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

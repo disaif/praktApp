@@ -10,14 +10,11 @@ namespace praktApp.Models
     {
         [PrimaryKey, AutoIncrement, NotNull]
         public int Id { get; set; }
-        [ForeignKey(typeof(User))]
-        public int UserId { get; set; }
         [NotNull]
         public string Name { get; set; }
         [NotNull]
-        public bool IsPublic { get; set; }
-        [ManyToOne]
-        public User User { get; set; }
+        public bool IsUser { get; set; }
+
         [OneToMany(CascadeOperations = CascadeOperation.CascadeDelete)]
         public List<Word> Words { get; set; }
 
@@ -25,7 +22,7 @@ namespace praktApp.Models
         {
             get
             {
-                if (App.SaveChangedCategory.categories[Id-1])
+                if (App.SaveChangedCategory.categories.Contains(Id))
                     return 1;
                 return 0;
             }

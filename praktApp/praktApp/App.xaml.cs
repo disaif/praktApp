@@ -9,6 +9,7 @@ using System.Reflection;
 using testAnd;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using praktApp.Views;
 
 namespace praktApp
 {
@@ -18,7 +19,6 @@ namespace praktApp
 
         public static SaveChangedCategory SaveChangedCategory;
         public static SaveStudedCategory SaveStudedCategory;
-        public static User CurrentUser;
         public static PraktDB PraktDB
         {
             get
@@ -40,34 +40,27 @@ namespace praktApp
 
         protected override void OnStart()
         {
-           
-                
-
             try
             {
                 if (App.PraktDB.GetCategoryAsync().Result.Count == 0)
                 {
-                    User user = new User() { email = "Nikitos613@mail.ru", nickname = "Ebola", password = "123", Photo = ImageDataFromResource("praktApp.Images.ava.jpg")};
-                    PraktDB.SaveUserAsync(user);
-
-                    Category categoryME = new Category() { IsPublic = true, Name = "Мэкэникал Инжинеринг" };
+                    Category categoryME = new Category() { IsUser = false, Name = "Мэкэникал Инжинеринг" };
                     App.PraktDB.SaveCategoryAsync(categoryME).Wait();
                     categoryME = App.PraktDB.GetCategoryAsync().Result.Where(p => p.Name == categoryME.Name).FirstOrDefault();
                     List<Word> words = new List<Word>(){
                     new Word() { Category = categoryME, CategoryId = categoryME.Id, Term = "involves", Translation = "включать"}
-                    /*,
+                    ,
                     new Word() { Category = categoryME, CategoryId = categoryME.Id, Term = "maintence", Translation = "эксплуатация"},
                     new Word() { Category = categoryME, CategoryId = categoryME.Id, Term = "request", Translation = "требовать"},
                     new Word() { Category = categoryME, CategoryId = categoryME.Id, Term = "predict", Translation = "предсказывать"},
                     new Word() { Category = categoryME, CategoryId = categoryME.Id, Term = "employ", Translation = "использовать"},
-                    */
                     };
                     foreach (Word word in words)
                         App.PraktDB.SaveWordAsync(word);
                     categoryME.Words = words;
                     App.PraktDB.SaveCategoryAsync(categoryME);
 
-                    categoryME = new Category() { IsPublic = true, Name = "Электроника" };
+                    categoryME = new Category() { IsUser = false, Name = "Электроника" };
                     App.PraktDB.SaveCategoryAsync(categoryME).Wait();
                     categoryME = App.PraktDB.GetCategoryAsync().Result.Where(p => p.Name == categoryME.Name).FirstOrDefault();
                     words = new List<Word>(){
@@ -86,17 +79,19 @@ namespace praktApp
                 if (File.Exists(SaveClass.pathChCa))
                     SaveClass.deserialize(SaveClass.pathChCa);
                 else
+                {
                     SaveChangedCategory = new SaveChangedCategory();
-
-                if (File.Exists(SaveClass.pathCurUser))
-                    SaveClass.deserialize(SaveClass.pathCurUser);
-                else
-                    CurrentUser = null;
+                    SaveChangedCategory.categories = new List<int>();
+                }
 
                 if (File.Exists(SaveClass.pathStCa))
                     SaveClass.deserialize(SaveClass.pathStCa);
                 else
+                {
                     SaveStudedCategory = new SaveStudedCategory();
+                    SaveStudedCategory.categories = new List<int>();
+                }
+
             }
             catch(Exception ex)
             {
@@ -127,6 +122,26 @@ namespace praktApp
         {
             TheTheme.SetTheme();
             RequestedThemeChanged -= App_RequestedThemeChanged;
+
+            if (CreateOrUpdateCategoryPage.CurrentCategory != null)
+                PraktDB.SaveCategoryAsync(CreateOrUpdateCategoryPage.CurrentCategory);
+            CreateOrUpdateCategoryPage.CurrentCategory = null;
+
+            foreach (CheckBox checkBox in selectedCategoriesPage.checkBoxes)
+            {
+                Category currentCategory = checkBox.BindingContext as Category;
+                if (currentCategory == null)
+                    return;
+                if (checkBox.IsChecked)
+                {
+                    App.SaveChangedCategory.categories.Add(currentCategory.Id);
+                }
+                else
+                {
+                    App.SaveChangedCategory.categories.Remove(currentCategory.Id);
+                }
+            }
+            SaveClass.serialize(SaveClass.pathChCa);
         }
 
         protected override void OnResume()

@@ -127,7 +127,7 @@
                                         <RadioButton x:Name="RadioButtonLight" CheckedChanged="RadioButtonSystem_CheckedChanged" Value="Light" HorizontalOptions="Center">
                                             <RadioButton.Content>
                                                 <StackLayout Margin="0, 15, 0, 0" HorizontalOptions="Center">
-                                                    <Image WidthRequest="30" HeightRequest="25"  Source="night.png"  />
+                                                    <Image WidthRequest="30" HeightRequest="25"  Source="sun.png"  />
                                                     <Label FontSize="14" Text="Светлая"/>
                                                 </StackLayout>
                                             </RadioButton.Content>
@@ -140,7 +140,7 @@
                                     Value="Dark">
                                             <RadioButton.Content>
                                                 <StackLayout Margin="0, 15, 0, 0" HorizontalOptions="Center">
-                                                    <Image WidthRequest="30" HeightRequest="25"  Source="night.png"/>
+                                                    <Image WidthRequest="30" HeightRequest="25"  Source="moon-.png"/>
                                                     <Label
                                                 FontSize="14"
                                                 Text="Темная"/>
@@ -154,31 +154,6 @@
 
                     </StackLayout>
                 </Grid>
-                <Frame  Margin="10, 0, 10, 0" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                      Light={StaticResource LFrameColor}}"
-                        BorderColor="{AppThemeBinding
-                                       Dark={StaticResource DBorderColor},
-                                       Light={StaticResource LBorderColor}}">
-                    <StackLayout Orientation="Horizontal">
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                        </StackLayout.GestureRecognizers>
-                        <Image Source="settings.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
-                        <Label Text="Настройки" FontSize="16" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                                      Light={StaticResource LTextColor}}"/>
-                    </StackLayout>
-                </Frame>
-                <Frame Margin="10, 0, 10, 0"  BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                      Light={StaticResource LFrameColor}}"
-                       BorderColor="{AppThemeBinding
-                                       Dark={StaticResource DBorderColor},
-                                       Light={StaticResource LBorderColor}}">
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="share.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
-                        <Label Text="Поделиться" FontSize="16" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                                      Light={StaticResource LTextColor}}"/>
-                    </StackLayout>
-                </Frame>
                 <Frame Margin="10, 0, 10, 10" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
                                                       Light={StaticResource LFrameColor}}"
                        BorderColor="{AppThemeBinding

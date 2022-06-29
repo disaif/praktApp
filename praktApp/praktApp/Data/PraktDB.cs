@@ -17,38 +17,8 @@ namespace praktApp.Data
         {
             db = new SQLiteAsyncConnection(connectionString);
 
-            
-            db.CreateTableAsync<User>().Wait();
             db.CreateTableAsync<Category>().Wait();
             db.CreateTableAsync<Word>().Wait();
-        }
-
-        // Методы для Пользователей
-        public Task<List<User>> GetUserAsync()
-        {
-            return db.GetAllWithChildrenAsync<User>();
-        }
-
-        public async Task<User> GetUserAsync(int Id)
-        {
-            List<User> users = await GetUserAsync();
-            return users.Where(p => p.Id == Id).FirstOrDefault();
-        }
-
-        public Task<int> SaveUserAsync(User user)
-        {
-            if (user.Id == 0)
-                return db.InsertAsync(user);
-            return db.UpdateAsync(user);
-        }
-
-        public Task<int> DeleteUserAsync(User user)
-        {
-            List<Category> categories = user.Categories;
-            var v = db.DeleteAsync(user);
-            foreach (Category c in categories)
-                DeleteCategoryAsync(c);
-            return v;
         }
 
         // Методы для категорий

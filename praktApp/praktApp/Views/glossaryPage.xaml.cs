@@ -23,7 +23,7 @@ namespace praktApp.Views
         {
             try
             {
-                if (App.SaveChangedCategory.categories.Length == 0)
+                if (App.SaveChangedCategory.categories.Count == 0)
                     return;
                 words = App.PraktDB.GetWordAsync().Result.Where(p => p.Category.MessageFileId == 1).ToList();
                 collectionWordView.ItemsSource = words;
@@ -39,7 +39,7 @@ namespace praktApp.Views
         {
             try
             {
-                if (App.SaveChangedCategory.categories.Length == 0)
+                if (App.SaveChangedCategory.categories.Count == 0)
                     return;
                 collectionWordView.ItemsSource = words.Where(p => p.Term.ToLower().Contains(SearchTB.Text.ToLower()) || p.Category.Name.ToLower().Contains(SearchTB.Text.ToLower()) || p.Translation.ToLower().Contains(SearchTB.Text.ToLower()));
             }

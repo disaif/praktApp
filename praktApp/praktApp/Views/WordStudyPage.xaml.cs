@@ -25,16 +25,16 @@ namespace praktApp.Views
         {
             InitializeComponent();
             Shell.SetTabBarIsVisible(this, false);
-            categories = App.PraktDB.GetCategoryAsync().Result.Where(p => App.SaveChangedCategory.categories[p.Id - 1]).ToList();
+            categories = App.PraktDB.GetCategoryAsync().Result.Where(p => App.SaveChangedCategory.categories.Contains(p.Id)).ToList();
             isError = new bool[categories.Count];
             LabelTerm.Text = categories[0].Words[0].Translation;
-
             double countWord = 0;
             foreach(Category category in categories)
             {
                 countWord += category.Words.Count;
             }
             step = 1 / countWord;
+            EntTB.Focus();
         }
 
         private async void EntTB_Completed(object sender, EventArgs e)
@@ -72,6 +72,7 @@ namespace praktApp.Views
             currentWord++;
             LabelTerm.Text = categories[currentCategory].Words[currentWord].Translation;
             EntTB.Text = "";
+            EntTB.Focus();
         }
     }
 }

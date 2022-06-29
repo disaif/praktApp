@@ -11,54 +11,63 @@
     <ContentPage.Content>
         <StackLayout>
             <SearchBar Placeholder="Искать категорию..." PlaceholderColor="LightGray" FontSize="16" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                                                                                                       Light={StaticResource LFrameColor}}">
+                                                                                                                                       Light={StaticResource LFrameColor}}" x:Name="searchTB" TextChanged="searchTB_TextChanged">
             </SearchBar>
-            <ScrollView>
-                <CollectionView x:Name="collectionCategoryView" SelectionMode="Single">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
+            <Grid>
+                <ScrollView>
+                    <CollectionView x:Name="collectionCategoryView" SelectionMode="Single" SelectionChanged="collectionCategoryView_SelectionChanged">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
 
-                                <Frame Grid.Row="0" Grid.Column="0"  Margin="10" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                    <Frame Grid.Row="0" Grid.Column="0"  Margin="10" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor}, Light={StaticResource LFrameColor}}" BorderColor="{AppThemeBinding
+                                       Dark={StaticResource DBorderColor},
+                                       Light={StaticResource LBorderColor}}">
+                                        <StackLayout>
+                                            <Label Text="{Binding Name}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor}, Light={StaticResource LTextColor}}"/>
+                                            <Label Text="{Binding IsStuded}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor}, Light={StaticResource LTextColor}}" FontSize="12"/>
+                                        </StackLayout>
+
+                                    </Frame>
+                                    <Frame Grid.Row="0" Grid.Column="1" Margin="0,10,10,10 " BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
                                                                                                                  Light={StaticResource LFrameColor}}"
                                        BorderColor="{AppThemeBinding
                                        Dark={StaticResource DBorderColor},
                                        Light={StaticResource LBorderColor}}">
-                                    <StackLayout>
-                                        <Label Text="{Binding Name}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor}, Light={StaticResource LTextColor}}"/>
-                                        <Label Text="{Binding IsStuded}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor}, Light={StaticResource LTextColor}}" FontSize="12"/>
-                                    </StackLayout>
-                                    
-                                </Frame>
-                                <Frame Grid.Row="0" Grid.Column="1" Margin="0,10,10,10 " BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                                                                                 Light={StaticResource LFrameColor}}"
-                                       BorderColor="{AppThemeBinding
-                                       Dark={StaticResource DBorderColor},
-                                       Light={StaticResource LBorderColor}}">
-                                    <CheckBox HorizontalOptions="Center" x:Name="checkboxCV" Color="#DDA0DD" VerticalOptions="Center" Grid.Column="2" CheckedChanged="CheckBox_CheckedChanged">
-                                        <CheckBox.Style>
-                                            <Style TargetType="CheckBox">
-                                                <Style.Triggers>
-                                                    <DataTrigger TargetType="CheckBox" Binding="{Binding MessageFileId}" Value="1">
-                                                        <Setter Property="IsChecked" Value="True"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </CheckBox.Style>
-                                    </CheckBox>
-                                </Frame>
-                            </Grid>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </ScrollView>
+                                        <CheckBox HorizontalOptions="Center" x:Name="checkboxCV" Color="#DDA0DD" VerticalOptions="Center" Grid.Column="2" CheckedChanged="CheckBox_CheckedChanged">
+                                            <CheckBox.Style>
+                                                <Style TargetType="CheckBox">
+                                                    <Style.Triggers>
+                                                        <DataTrigger TargetType="CheckBox" Binding="{Binding MessageFileId}" Value="1">
+                                                            <Setter Property="IsChecked" Value="True"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </CheckBox.Style>
+                                        </CheckBox>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+                <Frame  WidthRequest="40" HeightRequest="40" BackgroundColor="#DDA0DD" CornerRadius="40" VerticalOptions="End" HorizontalOptions="End"  Margin="15">
+                    <Grid>
+                        <Button Clicked="Button_Clicked" Opacity="0"/>
+                        <Rectangle WidthRequest="40" HeightRequest="10" RadiusX="5" RadiusY="5" Fill="DimGray" VerticalOptions="Center" HorizontalOptions="Center"/>
+                        <Rectangle WidthRequest="10" HeightRequest="40" RadiusX="5" RadiusY="5" Fill="DimGray" VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </Grid>
+                </Frame>
+                
+            </Grid>
+           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

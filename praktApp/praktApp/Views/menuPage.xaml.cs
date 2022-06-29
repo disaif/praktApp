@@ -33,11 +33,6 @@ namespace praktApp.Views
         }
         bool loaded;
 
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new settingsPage());
-        }
-
         protected override void OnAppearing()
         {
             loaded = true;

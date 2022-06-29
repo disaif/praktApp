@@ -17,7 +17,7 @@
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </StackLayout.GestureRecognizers>
-                    <Image Source="settings.png" WidthRequest="20" HeightRequest="20" Margin="0, 0, 10, 0"/>
+                    <Image Source="Category.png" WidthRequest="20" HeightRequest="20" Margin="0, 0, 10, 0"/>
                     <Label Text="Выбранные категории" Margin="0, 0, 10, 0" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"></Label>
                 </StackLayout>
@@ -31,7 +31,7 @@
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                     </StackLayout.GestureRecognizers>
-                   <Image Source="settings.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
+                    <Image Source="study.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
                     <Label Text="Заучивание" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
                 </StackLayout>
@@ -42,7 +42,7 @@
                                        Dark={StaticResource DBorderColor},
                                        Light={StaticResource LBorderColor}}">
                 <StackLayout Orientation="Horizontal">
-                    <Image Source="settings.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
+                    <Image Source="book.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
                     <Label Text="Грамматика" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
                 </StackLayout>

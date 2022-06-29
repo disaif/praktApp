@@ -16,8 +16,8 @@
                 <Setter Property="CornerRadius" Value="10"></Setter>
             </Style>
 
-            <Color x:Key="LRadioButtonColor">#F3F2F1</Color>
-            <Color x:Key="DRadioButtonColor">#9B9A99</Color>
+            <Color x:Key="LightRadioButtonColor">#F3F2F1</Color>
+            <Color x:Key="DarkRadioButtonColor">#9B9A99</Color>
 
             <Color x:Key="LBackgroundColor">#FEFEFE</Color>
             <Color x:Key="DBackgroundColor">#252626</Color>

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="praktApp.Views.menuPage"
+             Title="Меню"
              BackgroundColor="{AppThemeBinding
                                        Dark={StaticResource DBackgroundColor},
                                        Light={StaticResource LBackgroundColor}}">
@@ -9,15 +10,17 @@
         <ResourceDictionary>
             <ControlTemplate x:Key="ThemeRadioTemplate">
                 <Frame
+                    Padding="0"
                     BackgroundColor="{AppThemeBinding Dark={StaticResource DarkRadioButtonColor},
                                                       Light={StaticResource LightRadioButtonColor}}"
                     BorderColor="{AppThemeBinding Dark={StaticResource DarkRadioButtonColor},
                                                   Light={StaticResource LightRadioButtonColor}}"
+                    CornerRadius="8"
+                    WidthRequest="100"
                     HeightRequest="80"
                     HorizontalOptions="Start"
-                    VerticalOptions="Start"
-                    WidthRequest="95">
-                    <Grid Margin="4" WidthRequest="80">
+                    VerticalOptions="Start">
+                    <Grid Margin="4">
                         <Grid
                             HeightRequest="20"
                             HorizontalOptions="End"
@@ -52,6 +55,7 @@
                                 VerticalOptions="Center"
                                 WidthRequest="10" />
                         </Grid>
+                        <ContentPresenter />
                     </Grid>
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroupList>
@@ -75,105 +79,118 @@
                     </VisualStateManager.VisualStateGroups>
                 </Frame>
             </ControlTemplate>
+
+            <Style TargetType="RadioButton">
+                <Setter Property="ControlTemplate" Value="{StaticResource ThemeRadioTemplate}" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                         Light={StaticResource LFrameColor}}"
+                <Grid ColumnDefinitions="5,auto,5">
+                    <StackLayout Grid.Column="1">
+                        <Label
+                            Margin="0,12,0,0"
+                            Text="Тема приложения"
+                            TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                      Light={StaticResource LTextColor}}"/>
+                        <Grid>
+                            <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                                                      Light={StaticResource LFrameColor}}"
                                BorderColor="{AppThemeBinding
                                        Dark={StaticResource DBorderColor},
                                        Light={StaticResource LBorderColor}}">
-                    <Label
-                        Margin="0,12,0,0"
-                        Text="Тема приложения"
-                        TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                                    Light={StaticResource LTextColor}}">
-                    </Label>
-                    <StackLayout RadioButtonGroup.GroupName="ThemeGroup">
-                        <RadioButton
-                            x:Name="RadioButtonSystem"
-                            Grid.Column="0"
-                            CheckedChanged="RadioButtonSystem_CheckedChanged"
-                            Value="System">
-                            <RadioButton.Content>
-                                <StackLayout  Margin="0, 15, 0, 0" HorizontalOptions="Center">
-                                    <Image WidthRequest="30" HeightRequest="25" Source="night.png" />
-                                    <Label
-                                        FontSize="14"
-                                        Text="Системная"/>
-                                </StackLayout>
-                            </RadioButton.Content>
-                        </RadioButton>
-                        <RadioButton
-                            x:Name="RadioButtonLight"
-                            Grid.Column="1"
-                            CheckedChanged="RadioButtonSystem_CheckedChanged"
-                            Value="Light">
-                            <RadioButton.Content>
-                                <StackLayout Margin="0, 15, 0, 0" HorizontalOptions="Center">
-                                    <Image WidthRequest="30" HeightRequest="25"  Source="night.png"  />
-                                    <Label
-                                        FontSize="14"
-                                        Text="Светлая"/>
-                                </StackLayout>
-                            </RadioButton.Content>
-                        </RadioButton>
-                        <RadioButton
-                            x:Name="RadioButtonDark"
-                            Grid.Column="2"
-                            CheckedChanged="RadioButtonSystem_CheckedChanged"
-                            Value="Dark">
-                            <RadioButton.Content>
-                                <StackLayout Margin="0, 15, 0, 0" HorizontalOptions="Center">
-                                    <Image WidthRequest="30" HeightRequest="25"  Source="night.png"/>
-                                    <Label
-                                        FontSize="14"
-                                        Text="Темная"/>
-                                </StackLayout>
-                            </RadioButton.Content>
-                        </RadioButton>
+                                <Grid RadioButtonGroup.GroupName="ThemeGroup">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <RadioButton
+                                    x:Name="RadioButtonSystem"
+                                    CheckedChanged="RadioButtonSystem_CheckedChanged"
+                                    Value="System" HorizontalOptions="Center">
+                                            <RadioButton.Content>
+                                                <StackLayout  Margin="0, 15, 0, 0" HorizontalOptions="Center">
+                                                    <Image WidthRequest="30" HeightRequest="25" Source="night.png" />
+                                                    <Label
+                                                FontSize="14"
+                                                Text="Системная"/>
+                                                </StackLayout>
+                                            </RadioButton.Content>
+                                        </RadioButton>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <RadioButton x:Name="RadioButtonLight" CheckedChanged="RadioButtonSystem_CheckedChanged" Value="Light" HorizontalOptions="Center">
+                                            <RadioButton.Content>
+                                                <StackLayout Margin="0, 15, 0, 0" HorizontalOptions="Center">
+                                                    <Image WidthRequest="30" HeightRequest="25"  Source="night.png"  />
+                                                    <Label FontSize="14" Text="Светлая"/>
+                                                </StackLayout>
+                                            </RadioButton.Content>
+                                        </RadioButton>
+                                    </Grid>
+                                    <Grid Grid.Column="2">
+                                        <RadioButton HorizontalOptions="Center"
+                                    x:Name="RadioButtonDark"
+                                    CheckedChanged="RadioButtonSystem_CheckedChanged"
+                                    Value="Dark">
+                                            <RadioButton.Content>
+                                                <StackLayout Margin="0, 15, 0, 0" HorizontalOptions="Center">
+                                                    <Image WidthRequest="30" HeightRequest="25"  Source="night.png"/>
+                                                    <Label
+                                                FontSize="14"
+                                                Text="Темная"/>
+                                                </StackLayout>
+                                            </RadioButton.Content>
+                                        </RadioButton>
+                                    </Grid>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+
                     </StackLayout>
-                </Frame>
-            </StackLayout>
-            <Frame  Margin="10, 0, 10, 0" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                </Grid>
+                <Frame  Margin="10, 0, 10, 0" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
                                                       Light={StaticResource LFrameColor}}"
                         BorderColor="{AppThemeBinding
                                        Dark={StaticResource DBorderColor},
                                        Light={StaticResource LBorderColor}}">
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                    </StackLayout.GestureRecognizers>
-                    <Image Source="settings.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
-                    <Label Text="Настройки" FontSize="16" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="settings.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
+                        <Label Text="Настройки" FontSize="16" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
-                </StackLayout>
-            </Frame>
-            <Frame Margin="10, 0, 10, 0"  BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="10, 0, 10, 0"  BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
                                                       Light={StaticResource LFrameColor}}"
                        BorderColor="{AppThemeBinding
                                        Dark={StaticResource DBorderColor},
                                        Light={StaticResource LBorderColor}}">
-                <StackLayout Orientation="Horizontal">
-                    <Image Source="share.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
-                    <Label Text="Поделиться" FontSize="16" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="share.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
+                        <Label Text="Поделиться" FontSize="16" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
-                </StackLayout>
-            </Frame>
-            <Frame Margin="10, 0, 10, 10" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="10, 0, 10, 10" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
                                                       Light={StaticResource LFrameColor}}"
                        BorderColor="{AppThemeBinding
                                        Dark={StaticResource DBorderColor},
                                        Light={StaticResource LBorderColor}}">
-                <StackLayout Orientation="Horizontal">
-                    <Image Source="description.jpg" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
-                    <Label Text="О приложении" FontSize="16" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                 Light={StaticResource LTextColor}}"/>
-                </StackLayout>
-            </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="description.jpg" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
+                        <Label Text="О приложении" FontSize="16" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                      Light={StaticResource LTextColor}}"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

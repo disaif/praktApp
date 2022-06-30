@@ -81,7 +81,11 @@ namespace praktApp
                 else
                 {
                     SaveChangedCategory = new SaveChangedCategory();
-                    SaveChangedCategory.categories = new List<int>();
+                    SaveChangedCategory.categories = new List<IdCategiriesAndFlag>();
+                    foreach(Category cat in PraktDB.GetCategoryAsync().Result)
+                    {
+                        SaveChangedCategory.categories.Add(new IdCategiriesAndFlag() { flag = false, Id = cat.Id });
+                    }
                 }
 
                 if (File.Exists(SaveClass.pathStCa))
@@ -127,20 +131,6 @@ namespace praktApp
                 PraktDB.SaveCategoryAsync(CreateOrUpdateCategoryPage.CurrentCategory);
             CreateOrUpdateCategoryPage.CurrentCategory = null;
 
-            foreach (CheckBox checkBox in selectedCategoriesPage.checkBoxes)
-            {
-                Category currentCategory = checkBox.BindingContext as Category;
-                if (currentCategory == null)
-                    return;
-                if (checkBox.IsChecked)
-                {
-                    App.SaveChangedCategory.categories.Add(currentCategory.Id);
-                }
-                else
-                {
-                    App.SaveChangedCategory.categories.Remove(currentCategory.Id);
-                }
-            }
             SaveClass.serialize(SaveClass.pathChCa);
         }
 

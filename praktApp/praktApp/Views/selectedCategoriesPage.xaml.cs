@@ -29,28 +29,22 @@ namespace praktApp.Views
         public static List<CheckBox> checkBoxes = new List<CheckBox>();
         private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
-            if (!checkBoxes.Contains(sender as CheckBox))
+
+            Category currentCategory = (sender as CheckBox).BindingContext as Category;
+            if (currentCategory == null)
+                return;
+            if ((sender as CheckBox).IsChecked)
             {
-                checkBoxes.Add(sender as CheckBox);
+                App.SaveChangedCategory.categories.Where(p => p.Id == currentCategory.Id).FirstOrDefault().flag = true;
+            }
+            else
+            {
+                App.SaveChangedCategory.categories.Where(p => p.Id == currentCategory.Id).FirstOrDefault().flag = false;
             }
         }
-
+        bool flag = true;
         protected override void OnDisappearing()
         {
-            foreach(CheckBox  checkBox in checkBoxes)
-            {
-                Category currentCategory = checkBox.BindingContext as Category;
-                if (currentCategory == null)
-                    return;
-                if (checkBox.IsChecked)
-                {
-                    App.SaveChangedCategory.categories.Add(currentCategory.Id);
-                }
-                else
-                {
-                    App.SaveChangedCategory.categories.Remove(currentCategory.Id);
-                }
-            }
             SaveClass.serialize(SaveClass.pathChCa);
         }
 
@@ -77,6 +71,11 @@ namespace praktApp.Views
             {
 
             }
+        }
+
+        private void checkboxCV_Focused(object sender, FocusEventArgs e)
+        {
+            flag = false;
         }
     }
 }

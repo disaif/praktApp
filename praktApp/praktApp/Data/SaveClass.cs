@@ -10,8 +10,14 @@ namespace praktApp.Data
     [Serializable]
     public class SaveChangedCategory
     {
-        public List<int> categories { get; set; }
+        public List<IdCategiriesAndFlag> categories { get; set; }
     }
+    public class IdCategiriesAndFlag
+    {
+        public int Id = 0;
+        public bool flag = false;
+    }
+
     [Serializable]
     public class SaveStudedCategory
     {

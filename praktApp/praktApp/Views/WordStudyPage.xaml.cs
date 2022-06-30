@@ -25,7 +25,7 @@ namespace praktApp.Views
         {
             InitializeComponent();
             Shell.SetTabBarIsVisible(this, false);
-            categories = App.PraktDB.GetCategoryAsync().Result.Where(p => App.SaveChangedCategory.categories.Contains(p.Id)).ToList();
+            categories = App.PraktDB.GetCategoryAsync().Result.Where(p => App.SaveChangedCategory.categories.Where(w => w.Id == p.Id).FirstOrDefault().flag).ToList();
             isError = new bool[categories.Count];
             LabelTerm.Text = categories[0].Words[0].Translation;
             double countWord = 0;

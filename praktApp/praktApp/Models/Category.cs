@@ -2,6 +2,7 @@
 using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace praktApp.Models
@@ -22,7 +23,7 @@ namespace praktApp.Models
         {
             get
             {
-                if (App.SaveChangedCategory.categories.Contains(Id))
+                if (App.SaveChangedCategory.categories.Where(p => p.Id == Id).FirstOrDefault().flag)
                     return 1;
                 return 0;
             }

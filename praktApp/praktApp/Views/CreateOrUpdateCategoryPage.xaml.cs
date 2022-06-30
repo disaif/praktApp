@@ -70,6 +70,8 @@ namespace praktApp.Views
 
                 if (!Updatemode)
                 {
+                    App.SaveChangedCategory.categories.Add(new IdCategiriesAndFlag() { flag = false, Id = CurrentCategory.Id });
+
                     CurrentCategory.Words.Add(new Word() { Category = CurrentCategory, CategoryId = CurrentCategory.Id, Term = "", Translation = "" });
                     collectionWordView.ItemsSource = CurrentCategory.Words;
                     collectionWordView.ScrollTo(CurrentCategory.Words.Count);
@@ -105,8 +107,11 @@ namespace praktApp.Views
             if (result == true)
             {
                 await App.PraktDB.DeleteCategoryAsync(CurrentCategory);
-                App.SaveChangedCategory.categories.Remove(CurrentCategory.Id);
+
+                App.SaveChangedCategory.categories.Remove(App.SaveChangedCategory.categories.Where(p => p.Id == CurrentCategory.Id).FirstOrDefault());
                 SaveClass.serialize(SaveClass.pathChCa);
+
+
                 await Shell.Current.GoToAsync("..");
             }
         }

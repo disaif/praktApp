@@ -41,7 +41,7 @@
                                        BorderColor="{AppThemeBinding
                                        Dark={StaticResource DBorderColor},
                                        Light={StaticResource LBorderColor}}">
-                                        <CheckBox HorizontalOptions="Center" x:Name="checkboxCV" Color="#DDA0DD" VerticalOptions="Center" Grid.Column="2" CheckedChanged="CheckBox_CheckedChanged">
+                                        <CheckBox HorizontalOptions="Center" x:Name="checkboxCV" Focused="checkboxCV_Focused" Color="#DDA0DD" VerticalOptions="Center" Grid.Column="2" CheckedChanged ="CheckBox_CheckedChanged">
                                             <CheckBox.Style>
                                                 <Style TargetType="CheckBox">
                                                     <Style.Triggers>

@@ -24,7 +24,7 @@ namespace praktApp.Views
 
         private async void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-            foreach (Category category in App.PraktDB.GetCategoryAsync().Result.Where(p => App.SaveChangedCategory.categories.Contains(p.Id)))
+            foreach (Category category in App.PraktDB.GetCategoryAsync().Result.Where(p => App.SaveChangedCategory.categories.Where(w => w.Id == p.Id).FirstOrDefault().flag))
             {
                 if(category.Words.Count == 0)
                 {

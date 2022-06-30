@@ -140,7 +140,7 @@
                                     Value="Dark">
                                             <RadioButton.Content>
                                                 <StackLayout Margin="0, 15, 0, 0" HorizontalOptions="Center">
-                                                    <Image WidthRequest="30" HeightRequest="25"  Source="moon-.png"/>
+                                                    <Image WidthRequest="30" HeightRequest="25"  Source="moon.png"/>
                                                     <Label
                                                 FontSize="14"
                                                 Text="Темная"/>
@@ -160,6 +160,9 @@
                                        Dark={StaticResource DBorderColor},
                                        Light={StaticResource LBorderColor}}">
                     <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </StackLayout.GestureRecognizers>
                         <Image Source="description.jpg" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
                         <Label Text="О приложении" FontSize="16" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>

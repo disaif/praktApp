@@ -14,9 +14,9 @@
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </StackLayout.GestureRecognizers>
-                    <Label Text="A1 - Элементарный" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                    <Label Text="Тема 1" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
-                    <Label Text="19 тем" FontSize="12" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                    <Label Text="Понятие об артикле" FontSize="12" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
                 </StackLayout>
             </Frame>
@@ -28,9 +28,9 @@
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                     </StackLayout.GestureRecognizers>
-                    <Label Text="A2 - Предпороговый" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                    <Label Text="Тема 2" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
-                    <Label Text="17 тем" FontSize="12" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                    <Label Text="Множественное число" FontSize="12" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
                 </StackLayout>
             </Frame>
@@ -42,9 +42,9 @@
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
                     </StackLayout.GestureRecognizers>
-                    <Label Text="B1 - Средний" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                    <Label Text="Тема 3" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
-                    <Label Text="13 тем" FontSize="12" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                    <Label Text="Местоимения" FontSize="12" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
                                                       Light={StaticResource LTextColor}}"/>
                 </StackLayout>
             </Frame>

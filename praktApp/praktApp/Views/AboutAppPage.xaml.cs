@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace praktApp.Views.BookPages.A2
+namespace praktApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page3 : ContentPage
+    public partial class AboutAppPage : ContentPage
     {
-        public Page3()
+        public AboutAppPage()
         {
             InitializeComponent();
         }

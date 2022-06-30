@@ -41,41 +41,50 @@ namespace praktApp.Views
 
         private async void rename()
         {
-            string s = "";
-            do
+            try
             {
-                if (s != "")
-                    await DisplayAlert("Ошибка создания", "Имя категории занято", "Ок");
-                s = await DisplayPromptAsync("Имя категории", "Введите наименование категории", "Ок", "Отмена");
-                if (s == null)
+                string s = "";
+                do
                 {
-                    await Shell.Current.GoToAsync("..");
-                    return;
+                    if (s != "")
+                        await DisplayAlert("Ошибка создания", "Имя категории занято", "Ок");
+                    s = await DisplayPromptAsync("Имя категории", "Введите наименование категории", "Ок", "Отмена");
+                    if (s == null)
+                    {
+                        await Shell.Current.GoToAsync("..");
+                        return;
+                    }
+
+                }
+                while (App.PraktDB.GetCategoryAsync().Result.Where(p => p.Name == s).Count() != 0);
+                CategoryName.Title = s;
+                if (Updatemode)
+                    CurrentCategory.Name = s;
+
+                if (!Updatemode)
+                {
+                    CurrentCategory = new Category() { IsUser = true, Name = s, Words = new List<Word>() };
                 }
 
+                await App.PraktDB.SaveCategoryAsync(CurrentCategory);
+
+                if (!Updatemode)
+                {
+                    CurrentCategory.Words.Add(new Word() { Category = CurrentCategory, CategoryId = CurrentCategory.Id, Term = "", Translation = "" });
+                    collectionWordView.ItemsSource = CurrentCategory.Words;
+                    collectionWordView.ScrollTo(CurrentCategory.Words.Count);
+                    BtnIn.IsVisible = false;
+                }
             }
-            while (App.PraktDB.GetCategoryAsync().Result.Where(p => p.Name == s).Count() != 0);
-            CategoryName.Title = s;
-            if(Updatemode)
-            CurrentCategory.Name = s;
-
-            if (!Updatemode)
+            catch
             {
-                CurrentCategory = new Category() { IsUser = true, Name = s, Words = new List<Word>() };
-            }
-
-            await App.PraktDB.SaveCategoryAsync(CurrentCategory);
-
-            if (!Updatemode)
-            {
-            CurrentCategory.Words.Add(new Word() { Category = CurrentCategory, CategoryId = CurrentCategory.Id, Term = "", Translation = "" });
-                collectionWordView.ItemsSource = CurrentCategory.Words;
-                collectionWordView.ScrollTo(CurrentCategory.Words.Count);
-                BtnIn.IsVisible = false;
+                await Shell.Current.GoToAsync("..");
             }
         }
         protected override void OnDisappearing()
         {
+            if (CurrentCategory == null)
+                return;
             App.SaveStudedCategory.categories.Remove(CurrentCategory.Id);
             SaveClass.serialize(SaveClass.pathStCa);
             if (CurrentCategory != null)

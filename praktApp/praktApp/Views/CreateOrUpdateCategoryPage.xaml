@@ -4,7 +4,9 @@
              x:Class="praktApp.Views.CreateOrUpdateCategoryPage"
              Title="Категория"
              x:Name="CategoryName"
-             >
+             BackgroundColor="{AppThemeBinding
+                                       Dark={StaticResource DBackgroundColor},
+                                       Light={StaticResource LBackgroundColor}}">
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="settings.png" Text="Переименовать"  Clicked="CategoryNameTB_Clicked" x:Name="TB2"  Order="Secondary">
         </ToolbarItem>
@@ -28,8 +30,10 @@
                             Light={StaticResource LFrameColor}}">
                                 <Grid>
                                     <StackLayout>
-                                        <Entry Placeholder="Термин" Completed="Editor_Completed"  Unfocused="Editor_Completed" Text="{Binding Term}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                                      Light={StaticResource LTextColor}}">
+                                        <Entry Placeholder="Термин" Completed="Editor_Completed"  Unfocused="Editor_Completed" Text="{Binding Term}"    PlaceholderColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                                                                                                                                                          Light={StaticResource LTextColor}}" 
+                                                                                                                                                              TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                                                                                                                                                 Light={StaticResource LTextColor}}">
                                             <Entry.Style>
                                                 <Style TargetType="Entry">
                                                     <Style.Triggers>
@@ -41,7 +45,9 @@
                                             </Entry.Style>
                                         </Entry>
                                         <Entry Placeholder="Перевод" Completed="Editor_Completed" Unfocused="Editor_Completed" Text="{Binding Translation}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                                      Light={StaticResource LTextColor}}">
+                                                                                                                                                                                        Light={StaticResource LTextColor}}"
+                                               PlaceholderColor="{AppThemeBinding Dark={StaticResource DTextColor},
+                                                                                  Light={StaticResource LTextColor}}">
                                             <Entry.Style>
                                                 <Style TargetType="Entry">
                                                     <Style.Triggers>

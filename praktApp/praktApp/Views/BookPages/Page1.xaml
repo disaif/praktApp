@@ -29,12 +29,24 @@
                 <Label Margin="5, 5, 5, 5" Text="the - определенный;" TextColor="{AppThemeBinding
                                        Dark={StaticResource DTextColor},
                                        Light={StaticResource LTextColor}}"/>
-                <StackLayout BackgroundColor="LightCyan">
-                    <Label Text="Пример" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
-                    <Label Text="I want the apple" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
-                    <Label Text="Я хочу яблоко" FontSize="12" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
-                    <Label Text="I want an apple" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
-                    <Label Text="Я хочу яблоко" FontSize="12" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
+                <StackLayout BackgroundColor="{AppThemeBinding
+                                       Dark={StaticResource DStackColor},
+                                       Light={StaticResource LStackColor}}">
+                    <Label Text="Пример" HorizontalOptions="Center" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                    <Label Text="I want the apple" HorizontalOptions="Center" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                    <Label Text="Я хочу яблоко" FontSize="12" HorizontalOptions="Center" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                    <Label Text="I want an apple" HorizontalOptions="Center" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                    <Label Text="Я хочу яблоко" FontSize="12" HorizontalOptions="Center" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
                 </StackLayout>
                 <Label Margin="5, 5, 5, 5" Text="    Оба примера переводятся на русский одинаково, разница только в том, что в примере 1 - I want the apple мы имеем в виду какое-то конкретное яблоко, например яблоко, которое собеседник держит в руке. А в примере 2 - I want an apple мы имеем в виду какое-то неопределенное яблоко, любое." 
                        TextColor="{AppThemeBinding
@@ -48,12 +60,24 @@
                        TextColor="{AppThemeBinding
                                        Dark={StaticResource DTextColor},
                                        Light={StaticResource LTextColor}}"/>
-                <StackLayout BackgroundColor="LightCyan">
-                    <Label Text="Пример" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
-                    <Label Text="a car - машина" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
-                    <Label Text="a table - стол" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
-                    <Label Text="an elephant - слон" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
-                    <Label Text="an orange - апельсин" HorizontalOptions="Center" TextColor="{StaticResource LTextColor}"/>
+                <StackLayout BackgroundColor="{AppThemeBinding
+                                       Dark={StaticResource DStackColor},
+                                       Light={StaticResource LStackColor}}">
+                    <Label Text="Пример" HorizontalOptions="Center" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                    <Label Text="a car - машина" HorizontalOptions="Center" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                    <Label Text="a table - стол" HorizontalOptions="Center" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                    <Label Text="an elephant - слон" HorizontalOptions="Center" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
+                    <Label Text="an orange - апельсин" HorizontalOptions="Center" TextColor="{AppThemeBinding
+                                       Dark={StaticResource DTextColor},
+                                       Light={StaticResource LTextColor}}"/>
                 </StackLayout>
                 <Label Margin="5, 5, 5, 5" Text="    Артикль НЕ ставится, если перед существительным стоит:" 
                        TextColor="{AppThemeBinding

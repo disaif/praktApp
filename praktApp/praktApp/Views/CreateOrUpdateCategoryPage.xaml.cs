@@ -1,13 +1,11 @@
-﻿using praktApp.Data;
-using praktApp.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ЛР7_ВПКС.models;
 
 namespace praktApp.Views
 {
@@ -27,6 +25,7 @@ namespace praktApp.Views
         public CreateOrUpdateCategoryPage(bool v, Category cat)
         {
             InitializeComponent();
+            /*
             if (!cat.IsUser)
             {
                 TB1.IsEnabled = false;
@@ -37,10 +36,12 @@ namespace praktApp.Views
             CurrentCategory = cat;
             CategoryName.Title = CurrentCategory.Name;
             collectionWordView.ItemsSource = CurrentCategory.Words;
+            */
         }
 
         private async void rename()
         {
+            /*
             try
             {
                 string s = "";
@@ -82,9 +83,11 @@ namespace praktApp.Views
             {
                 await Shell.Current.GoToAsync("..");
             }
+            */
         }
         protected override void OnDisappearing()
         {
+            /*
             if (CurrentCategory == null)
                 return;
             App.SaveStudedCategory.categories.Remove(CurrentCategory.Id);
@@ -94,15 +97,19 @@ namespace praktApp.Views
                 App.PraktDB.SaveCategoryAsync(CurrentCategory).Wait();
             }
             CurrentCategory = null;
+            */
         }
 
         private void CategoryNameTB_Clicked(object sender, EventArgs e)
         {
+            /*
             rename();
+            */
         }
 
         private async void ToolbarItem_Clicked(object sender, EventArgs e)
         {
+            /*
             bool result = await DisplayAlert("Подтвердить действие", "Вы хотите удалить категорию?", "Да", "Нет");
             if (result == true)
             {
@@ -114,19 +121,23 @@ namespace praktApp.Views
 
                 await Shell.Current.GoToAsync("..");
             }
+            */
         }
 
         private void Button_Clicked(object sender, EventArgs e)
         {
+            /*
             CurrentCategory.Words.Add(new Word() {Category = CurrentCategory, CategoryId = CurrentCategory.Id, Term = "", Translation = ""});
             collectionWordView.ItemsSource = null;
             collectionWordView.ItemsSource = CurrentCategory.Words;
             collectionWordView.ScrollTo(CurrentCategory.Words.Count);
             BtnIn.IsVisible = false;
+            */
         }
 
         private async void Editor_Completed(object sender, EventArgs e)
         {
+            /*
             CurrentWord = CurrentCategory.Words.Where(p=>p.Term== (sender as Entry).Text || p.Translation == (sender as Entry).Text).FirstOrDefault();
             if (string.IsNullOrWhiteSpace(CurrentCategory.Words[CurrentCategory.Words.Count - 1].Term) || string.IsNullOrWhiteSpace(CurrentCategory.Words[CurrentCategory.Words.Count - 1].Translation))
             {
@@ -155,10 +166,12 @@ namespace praktApp.Views
             App.PraktDB.SaveWordAsync(CurrentWord).Wait();
             collectionWordView.ScrollTo(CurrentCategory.Words.Count);
             BtnIn.IsVisible = true;
+            */
         }
 
         private async void BtnDel_Clicked(object sender, EventArgs e)
         {
+            /*
             CurrentWord = (sender as ImageButton).BindingContext as Word;
             bool result = await DisplayAlert("Подтвердить действие", "Вы хотите удалить слово?", "Да", "Нет");
             if (result == true)
@@ -169,7 +182,7 @@ namespace praktApp.Views
                 collectionWordView.ItemsSource = CurrentCategory.Words;
                 collectionWordView.ScrollTo(CurrentCategory.Words.Count);
             }
-
+            */
         }
     }
 }

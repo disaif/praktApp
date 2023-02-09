@@ -1,53 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="praktApp.Views.studyPage"
-             BackgroundColor="{AppThemeBinding
-                                       Dark={StaticResource DBackgroundColor},
-                                       Light={StaticResource LBackgroundColor}}"
-             NavigationPage.HasNavigationBar="false">
+             x:Class="praktApp.Views.StudyPage"
+             NavigationPage.HasNavigationBar="false"
+             Title="Меню"
+             BackgroundColor="#252626"
+             >
     <ContentPage.Content>
         <StackLayout>
-            <Frame CornerRadius="10" Margin="10, 40, 10, 0" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                      Light={StaticResource LFrameColor}}"
-                   BorderColor="{AppThemeBinding
-                                       Dark={StaticResource DBorderColor},
-                                       Light={StaticResource LBorderColor}}">
+            <Frame CornerRadius="10" Margin="10, 40, 10, 0" >
                 <StackLayout Orientation="Horizontal">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                     </StackLayout.GestureRecognizers>
                     <Image Source="Category.png" WidthRequest="20" HeightRequest="20" Margin="0, 0, 10, 0"/>
-                    <Label Text="Выбранные категории" Margin="0, 0, 10, 0" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                                      Light={StaticResource LTextColor}}"></Label>
+                    <Label Text="Выбрать категорию" Margin="0, 0, 10, 0"/>
                 </StackLayout>
             </Frame>
-            <Frame Margin="10, 0, 10, 0" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                      Light={StaticResource LFrameColor}}"
-                   BorderColor="{AppThemeBinding
-                                       Dark={StaticResource DBorderColor},
-                                       Light={StaticResource LBorderColor}}">
+            <Frame Margin="10, 0, 10, 0">
                 <StackLayout Orientation="Horizontal">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
                     </StackLayout.GestureRecognizers>
                     <Image Source="study.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
-                    <Label Text="Заучивание" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                                      Light={StaticResource LTextColor}}"/>
-                </StackLayout>
-            </Frame>
-            <Frame Margin="10, 0, 10, 0" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                      Light={StaticResource LFrameColor}}"
-                   BorderColor="{AppThemeBinding
-                                       Dark={StaticResource DBorderColor},
-                                       Light={StaticResource LBorderColor}}">
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
-                    </StackLayout.GestureRecognizers>
-                    <Image Source="book.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
-                    <Label Text="Грамматика" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                                      Light={StaticResource LTextColor}}"/>
+                    <Label Text="Заучивание"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

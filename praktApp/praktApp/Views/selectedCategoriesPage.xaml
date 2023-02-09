@@ -1,17 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="praktApp.Views.selectedCategoriesPage"
-             BackgroundColor="{AppThemeBinding
-                                       Dark={StaticResource DBackgroundColor},
-                                       Light={StaticResource LBackgroundColor}}">
+             x:Class="praktApp.Views.SelectedCategoriesPage"
+             BackgroundColor="#252626"
+             >
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Все категории" Order="Primary"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar Placeholder="Искать категорию..." PlaceholderColor="LightGray" FontSize="16" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                                                                                                       Light={StaticResource LFrameColor}}" x:Name="searchTB" TextChanged="searchTB_TextChanged">
+            <SearchBar Placeholder="Искать категорию..." PlaceholderColor="LightGray" FontSize="16" x:Name="searchTB" TextChanged="searchTB_TextChanged">
             </SearchBar>
             <Grid>
                 <ScrollView>
@@ -27,21 +25,16 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Frame Grid.Row="0" Grid.Column="0"  Margin="10" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor}, Light={StaticResource LFrameColor}}" BorderColor="{AppThemeBinding
-                                       Dark={StaticResource DBorderColor},
-                                       Light={StaticResource LBorderColor}}">
+                                    <Frame Grid.Row="0" Grid.Column="0"  Margin="10">
                                         <StackLayout>
-                                            <Label Text="{Binding Name}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor}, Light={StaticResource LTextColor}}"/>
-                                            <Label Text="{Binding IsStuded}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor}, Light={StaticResource LTextColor}}" FontSize="12"/>
+                                            <Label Text="{Binding Category.Name}" />
+                                            <Label Text="{Binding IsStuded}" FontSize="12"/>
                                         </StackLayout>
 
                                     </Frame>
-                                    <Frame Grid.Row="0" Grid.Column="1" Margin="0,10,10,10 " BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                                                                                 Light={StaticResource LFrameColor}}"
-                                       BorderColor="{AppThemeBinding
-                                       Dark={StaticResource DBorderColor},
-                                       Light={StaticResource LBorderColor}}">
-                                        <CheckBox HorizontalOptions="Center" x:Name="checkboxCV" Focused="checkboxCV_Focused" Color="#DDA0DD" VerticalOptions="Center" Grid.Column="2" CheckedChanged ="CheckBox_CheckedChanged">
+                                    <Frame Grid.Row="0" Grid.Column="1" Margin="0,10,10,10 ">
+                                        <CheckBox HorizontalOptions="Center" IsChecked="{Binding IsChoose}" x:Name="checkboxCV" Focused="checkboxCV_Focused" Color="#DDA0DD" VerticalOptions="Center" Grid.Column="2" CheckedChanged ="CheckBox_CheckedChanged">
+                                           <!--
                                             <CheckBox.Style>
                                                 <Style TargetType="CheckBox">
                                                     <Style.Triggers>
@@ -51,6 +44,7 @@
                                                     </Style.Triggers>
                                                 </Style>
                                             </CheckBox.Style>
+                                            -->
                                         </CheckBox>
                                     </Frame>
                                 </Grid>
@@ -58,9 +52,9 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
                 </ScrollView>
-                <Frame  WidthRequest="40" HeightRequest="40" BackgroundColor="#DDA0DD" CornerRadius="40" VerticalOptions="End" HorizontalOptions="End"  Margin="15">
+                <Frame  WidthRequest="40" HeightRequest="40" BackgroundColor="#575757" CornerRadius="40" VerticalOptions="End" HorizontalOptions="End"  Margin="15">
                     <Grid>
-                        <Button Clicked="Button_Clicked" Opacity="0"/>
+                        <!--<Button Clicked="Button_Clicked" Opacity="0"/>-->
                         <Rectangle WidthRequest="40" HeightRequest="10" RadiusX="5" RadiusY="5" Fill="DimGray" VerticalOptions="Center" HorizontalOptions="Center"/>
                         <Rectangle WidthRequest="10" HeightRequest="40" RadiusX="5" RadiusY="5" Fill="DimGray" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Grid>

@@ -11,12 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Data\Save.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Data\ava.jpg" />
-    <None Remove="Data\Save.xml" />
     <None Remove="Images\profile.png" />
   </ItemGroup>
 
@@ -47,28 +41,43 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="AppShell.xaml">
+    <Compile Update="Views\glossaryPage.xaml.cs">
+      <DependentUpon>GlossaryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\menuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\selectedCategoriesPage.xaml.cs">
+      <DependentUpon>SelectedCategoriesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\studyPage.xaml.cs">
+      <DependentUpon>StudyPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\AppShell.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AboutAppPage.xaml">
+    <EmbeddedResource Update="Views\AutorizationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CreateOrUpdateCategoryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\glossaryPage.xaml">
+    <EmbeddedResource Update="Views\GlossaryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\GrammarPage.xaml">
+    <EmbeddedResource Update="Views\MenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\menuPage.xaml">
+    <EmbeddedResource Update="Views\RecoverPasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\selectedCategoriesPage.xaml">
+    <EmbeddedResource Update="Views\SelectedCategoriesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\studyPage.xaml">
+    <EmbeddedResource Update="Views\StudyPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\WordStudyPage.xaml">

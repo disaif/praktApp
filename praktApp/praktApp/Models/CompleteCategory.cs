@@ -5,27 +5,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ЛР7_ВПКС.Data;
 
 namespace ЛР7_ВПКС.models
 {
-    public class Word
+    public class CompleteCategory
     {
         [PrimaryKey, AutoIncrement, NotNull]
         public int Id { get; set; }
-        [NotNull]
-        public string Term { get; set; }
-        [NotNull]
-        public string Translate { get; set; }
+        [ForeignKey(typeof(User))]
+        public int UserId { get; set; }
         [ForeignKey(typeof(Category))]
         public int CategoryId { get; set; }
+        [ManyToOne]
+        public User User { get; set; }
+        [ManyToOne]
+        public Category Category { get; set; }
 
-        public string CategoryName
-        {
-            get
-            {
-                return ElectronicBookDB.GetContext().GetCategory(CategoryId).Name;
-            }
-        }
+        public bool IsStuded { get; set; }
+        public bool IsChoose { get; set; }
     }
 }

@@ -1,6 +1,4 @@
-﻿using praktApp.Data;
-using praktApp.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,15 +13,18 @@ namespace praktApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WordStudyPage : ContentPage
     {
+        /*
         private List<Category> categories;
         private int currentCategory = 0;
         private int currentWord = 0;
         private bool[] isError;
         private int Counterror;
         private double step;
+        */
         public WordStudyPage()
         {
             InitializeComponent();
+            /*
             Shell.SetTabBarIsVisible(this, false);
             categories = App.PraktDB.GetCategoryAsync().Result.Where(p => App.SaveChangedCategory.categories.Where(w => w.Id == p.Id).FirstOrDefault().flag).ToList();
             isError = new bool[categories.Count];
@@ -35,10 +36,12 @@ namespace praktApp.Views
             }
             step = 1 / countWord;
             EntTB.Focus();
+            */
         }
 
         private async void EntTB_Completed(object sender, EventArgs e)
         {
+            /*
             if (EntTB.Text.ToLower().Trim(' ') == categories[currentCategory].Words[currentWord].Term.ToLower().Trim(' '))
             {
                 //Верно
@@ -73,6 +76,7 @@ namespace praktApp.Views
             LabelTerm.Text = categories[currentCategory].Words[currentWord].Translation;
             EntTB.Text = "";
             EntTB.Focus();
+            */
         }
     }
 }

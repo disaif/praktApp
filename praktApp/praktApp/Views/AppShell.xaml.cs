@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using praktApp;
+using praktApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ЛР7_ВПКС.Data;
+using ЛР7_ВПКС.models;
 
-namespace praktApp.Views.BookPages.A1
+namespace testAnd
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page3 : ContentPage
+    public partial class AppShell : Shell
     {
-        public Page3()
+        public AppShell()
         {
             InitializeComponent();
         }

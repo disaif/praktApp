@@ -1,42 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="praktApp.Views.glossaryPage"
+             x:Class="praktApp.Views.GlossaryPage"
              Title="Словарь"
-             BackgroundColor="{AppThemeBinding
-                                       Dark={StaticResource DBackgroundColor},
-                                       Light={StaticResource LBackgroundColor}}">
+             BackgroundColor="#252626"
+             >
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar Placeholder="Искать слова..." x:Name="SearchTB" PlaceholderColor="LightGray" FontSize="16" TextChanged="SearchBar_TextChanged" BackgroundColor="{AppThemeBinding Dark={StaticResource DFrameColor},
-                                                                                                                                                                                                Light={StaticResource LFrameColor}}">
+            <SearchBar Placeholder="Искать слова..." x:Name="SearchTB" PlaceholderColor="LightGray" FontSize="16" TextChanged="SearchBar_TextChanged">
             </SearchBar>
-            
+
             <CollectionView x:Name="collectionWordView" Margin="20" SelectionMode="Single">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="{AppThemeBinding
-                                       Dark={StaticResource DBorderColor},
-                                       Light={StaticResource LBorderColor}}"
-                               BackgroundColor="{AppThemeBinding
-                            Dark={StaticResource DFrameColor},
-                            Light={StaticResource LFrameColor}}">
+                        <Frame>
                             <StackLayout>
-                                <Label Text="{Binding Category.Name}" HorizontalOptions="Center" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                                      Light={StaticResource LTextColor}}"/>
-                                <Label Text="{Binding Term}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                                      Light={StaticResource LTextColor}}"/>
-                                <Label Text="{Binding Translation}" TextColor="{AppThemeBinding Dark={StaticResource DTextColor},
-                                                      Light={StaticResource LTextColor}}"/>
+                                <Label Text="{Binding CategoryName}" HorizontalOptions="Center"/>
+                                <Label Text="{Binding Term}"/>
+                                <Label Text="{Binding Translate}"/>
                             </StackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

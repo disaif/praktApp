@@ -16,8 +16,6 @@ namespace ЛР7_ВПКС.models
         public string Name { get; set; }
         [ForeignKey(typeof(User))]
         public int UserId { get; set; }
-        [ManyToOne]
-        public User User { get; set; }
         [OneToMany]
         public List<Word> Words { get; set; }
         [OneToMany]

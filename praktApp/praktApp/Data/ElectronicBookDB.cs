@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using praktApp;
+using SQLite;
 using SQLiteNetExtensionsAsync.Extensions;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,16 @@ namespace ЛР7_ВПКС.Data
 
         public Task<int> DeleteCategoryAsync(Category category)
         {
+            db.DeleteAllAsync(category.Words).Wait();
+
+            foreach(CompleteCategory completeCategory in category.CompleteCatList)
+            {
+                DeleteComplCatAsync(completeCategory).Wait();
+                Global.CurrentUser.CategoriesComlList.Remove(completeCategory);
+            }
+
+            SaveUserAsync(Global.CurrentUser);
+
             return db.DeleteAsync(category);
         }
 

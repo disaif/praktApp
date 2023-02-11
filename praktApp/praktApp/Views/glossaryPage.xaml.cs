@@ -14,27 +14,21 @@ namespace praktApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GlossaryPage : ContentPage
     {
-        private List<Word> Words;
+
         public GlossaryPage()
         {
             InitializeComponent();
-
         }
 
         protected override void OnAppearing()
         {
-            Words = new List<Word>();
-            List<Category> categories = ElectronicBookDB.GetContext().GetCategoriesAsync().Result.Where(x => Global.completeCategoriesUser.FirstOrDefault(y => y.Id == x.Id && y.IsChoose) != null).ToList();
-            foreach (Category category in categories)
-            {
-                Words.AddRange(category.Words);
-            }
-            collectionWordView.ItemsSource = Words;
+            Global.UpdateListWords();
+            collectionWordView.ItemsSource = Global.ChooseCategoriesWords;
         }
 
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            collectionWordView.ItemsSource = Words.Where(p => p.Term.ToLower().Contains(SearchTB.Text.ToLower()) || p.CategoryName.ToLower().Contains(SearchTB.Text.ToLower()) || p.Translate.ToLower().Contains(SearchTB.Text.ToLower()));
+            collectionWordView.ItemsSource = Global.ChooseCategoriesWords.Where(p => p.Term.ToLower().Contains(SearchTB.Text.ToLower()) || p.CategoryName.ToLower().Contains(SearchTB.Text.ToLower()) || p.Translate.ToLower().Contains(SearchTB.Text.ToLower()));
         }
     }
 }

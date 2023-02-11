@@ -9,7 +9,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar Placeholder="Искать категорию..." PlaceholderColor="LightGray" FontSize="16" x:Name="searchTB" TextChanged="searchTB_TextChanged">
+            <SearchBar Placeholder="Искать категорию..." PlaceholderColor="LightGray" FontSize="16" x:Name="SearchTB" TextChanged="SearchTB_TextChanged">
             </SearchBar>
             <Grid>
                 <ScrollView>
@@ -28,23 +28,11 @@
                                     <Frame Grid.Row="0" Grid.Column="0"  Margin="10">
                                         <StackLayout>
                                             <Label Text="{Binding Category.Name}" />
-                                            <Label Text="{Binding IsStuded}" FontSize="12"/>
+                                            <Label Text="{Binding IsStudedText}" FontSize="12"/>
                                         </StackLayout>
-
                                     </Frame>
                                     <Frame Grid.Row="0" Grid.Column="1" Margin="0,10,10,10 ">
-                                        <CheckBox HorizontalOptions="Center" IsChecked="{Binding IsChoose}" x:Name="checkboxCV" Focused="checkboxCV_Focused" Color="#DDA0DD" VerticalOptions="Center" Grid.Column="2" CheckedChanged ="CheckBox_CheckedChanged">
-                                           <!--
-                                            <CheckBox.Style>
-                                                <Style TargetType="CheckBox">
-                                                    <Style.Triggers>
-                                                        <DataTrigger TargetType="CheckBox" Binding="{Binding MessageFileId}" Value="1">
-                                                            <Setter Property="IsChecked" Value="True"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </CheckBox.Style>
-                                            -->
+                                        <CheckBox HorizontalOptions="Center" IsChecked="{Binding IsChoose}" x:Name="checkboxCV" Color="#DDA0DD" VerticalOptions="Center" Grid.Column="2" CheckedChanged ="CheckBox_CheckedChanged">
                                         </CheckBox>
                                     </Frame>
                                 </Grid>
@@ -54,7 +42,7 @@
                 </ScrollView>
                 <Frame  WidthRequest="40" HeightRequest="40" BackgroundColor="#575757" CornerRadius="40" VerticalOptions="End" HorizontalOptions="End"  Margin="15">
                     <Grid>
-                        <!--<Button Clicked="Button_Clicked" Opacity="0"/>-->
+                        <Button Clicked="CreateNewCategoryButton_Clicked" Opacity="0"/>
                         <Rectangle WidthRequest="40" HeightRequest="10" RadiusX="5" RadiusY="5" Fill="DimGray" VerticalOptions="Center" HorizontalOptions="Center"/>
                         <Rectangle WidthRequest="10" HeightRequest="40" RadiusX="5" RadiusY="5" Fill="DimGray" VerticalOptions="Center" HorizontalOptions="Center"/>
                     </Grid>

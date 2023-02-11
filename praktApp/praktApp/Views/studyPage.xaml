@@ -11,7 +11,7 @@
             <Frame CornerRadius="10" Margin="10, 40, 10, 0" >
                 <StackLayout Orientation="Horizontal">
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Tapped="ChooseCategory_Tapped"/>
                     </StackLayout.GestureRecognizers>
                     <Image Source="Category.png" WidthRequest="20" HeightRequest="20" Margin="0, 0, 10, 0"/>
                     <Label Text="Выбрать категорию" Margin="0, 0, 10, 0"/>
@@ -20,7 +20,7 @@
             <Frame Margin="10, 0, 10, 0">
                 <StackLayout Orientation="Horizontal">
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                        <TapGestureRecognizer Tapped="VipolnitZauch_Tapped"/>
                     </StackLayout.GestureRecognizers>
                     <Image Source="study.png" WidthRequest="20" HeightRequest="15" Margin="0, 0, 10, 0"/>
                     <Label Text="Заучивание"/>

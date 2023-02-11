@@ -16,6 +16,9 @@ namespace praktApp
         /// Список выбранных пользователем категорий
         /// </summary>
         public static List<CompleteCategory> completeCategoriesUser;
+
+        public static List<Word> ChooseCategoriesWords;
+
         /// <summary>
         /// Путь к айди текущего пользователя
         /// </summary>
@@ -24,22 +27,24 @@ namespace praktApp
         /// Авторизовавшийся пользователь
         /// </summary>
         /// <param name="user"></param>
-        private static void InitializateUserInSystem(User user)
+        public static void UpdateCompleteCategoriesUser()
         {
-            CurrentUser = user;
-            completeCategoriesUser = ElectronicBookDB.GetContext().GetComplCatAsync().Result.Where(x => CurrentUser.CategoriesComlList.FirstOrDefault(y => y.Id == x.Id) != null).ToList();
+            List<CompleteCategory> completeCategories = ElectronicBookDB.GetContext().GetComplCatAsync().Result;
+            completeCategoriesUser = completeCategories.Where(x => CurrentUser.CategoriesComlList.FirstOrDefault(y => y.Id == x.Id) != null).ToList();
         }
 
         public static void SerializateUser(User user)
         {
+            CurrentUser = user;
             File.WriteAllText(CurUserPath, JsonConvert.SerializeObject(user.Id));
-            InitializateUserInSystem(user);
+            UpdateCompleteCategoriesUser();
         }
 
         public static void DeserealizateUser()
         {
             int id = JsonConvert.DeserializeObject<int>(File.ReadAllText(CurUserPath));
-            InitializateUserInSystem(ElectronicBookDB.GetContext().GetUsersAsync().Result.FirstOrDefault(i => i.Id == id));
+            CurrentUser = ElectronicBookDB.GetContext().GetUsersAsync().Result.FirstOrDefault(i => i.Id == id);
+            UpdateCompleteCategoriesUser();
         }
 
         public static void DeleteFileUserId()
@@ -50,6 +55,16 @@ namespace praktApp
         public static bool IsFileWithUserExist()
         {
             return File.Exists(CurUserPath);
+        }
+
+        public static void UpdateListWords()
+        {
+            ChooseCategoriesWords = new List<Word>();
+            List<Category> categories = ElectronicBookDB.GetContext().GetCategoriesAsync().Result.Where(x => completeCategoriesUser.FirstOrDefault(y => y.Id == x.Id && y.IsChoose) != null).ToList();
+            foreach (Category category in categories)
+            {
+                ChooseCategoriesWords.AddRange(category.Words);
+            }
         }
     }
 }

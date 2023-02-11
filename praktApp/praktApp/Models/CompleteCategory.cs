@@ -23,5 +23,14 @@ namespace ЛР7_ВПКС.models
 
         public bool IsStuded { get; set; }
         public bool IsChoose { get; set; }
+
+        public string IsStudedText
+        {
+            get
+            {
+                return IsStuded ? "Изучено" : "Не изучено";
+            }
+        }
+        public bool CanChange { get; set; }
     }
 }

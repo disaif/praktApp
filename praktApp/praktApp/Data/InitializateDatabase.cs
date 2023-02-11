@@ -82,8 +82,8 @@ namespace praktApp.Data
                 await DB.SaveClassAsync(@class);
                 await DB.SaveRoleAsync(role2);
 
-                CompleteCategory completeCategory1 = new CompleteCategory() {Category = category1, User = user1, IsChoose = true, IsStuded = false };
-                CompleteCategory completeCategory2 = new CompleteCategory() {Category = category2, User = user1, IsChoose = false, IsStuded = false };
+                CompleteCategory completeCategory1 = new CompleteCategory() {Category = category1, User = user1, IsChoose = true, IsStuded = false, CanChange = false };
+                CompleteCategory completeCategory2 = new CompleteCategory() {Category = category2, User = user1, IsChoose = false, IsStuded = false, CanChange = false };
 
                 await DB.SaveComplCatAsync(completeCategory1);
                 await DB.SaveComplCatAsync(completeCategory2);

@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using praktApp;
+using SQLite;
 using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,29 @@ namespace ЛР7_ВПКС.models
         {
             get
             {
-                return ElectronicBookDB.GetContext().GetCategory(CategoryId).Name;
+                try
+                {
+                    return ElectronicBookDB.GetContext().GetCategory(CategoryId).Name;
+                }
+                catch(Exception e)
+                {
+                    return e.Message;
+                }
+            }
+        }
+
+        public bool CanChanged
+        {
+            get
+            {
+                try
+                {
+                    return ElectronicBookDB.GetContext().GetComplCatAsync().Result.FirstOrDefault(x => x.CategoryId == CategoryId && x.UserId == Global.CurrentUser.Id).CanChange;
+                }
+                catch
+                {
+                    return true;
+                }
             }
         }
     }

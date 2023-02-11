@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="praktApp.Views.CreateOrUpdateCategoryPage"
              Title="Категория"
-             x:Name="CategoryName"
              BackgroundColor="#252626"
+             x:Name="contentPage"
              >
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="settings.png" Text="Переименовать"  Clicked="CategoryNameTB_Clicked" x:Name="TB2"  Order="Secondary">
+        <ToolbarItem IconImageSource="settings.png" Text="Переименовать"  Clicked="ToolBarItemRename_Clicked" x:Name="ToolBarItemRename"  Order="Secondary">
         </ToolbarItem>
-        <ToolbarItem IconImageSource="settings.png" Text="Удалить категорию"  Clicked="ToolbarItem_Clicked" x:Name="TB1"  Order="Secondary">
+        <ToolbarItem IconImageSource="settings.png" Text="Удалить категорию"  Clicked="ToolBarItemDelete_Clicked" x:Name="ToolBarItemDelete"  Order="Secondary">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -24,40 +24,10 @@
                             <Frame>
                                 <Grid>
                                     <StackLayout>
-                                        <Entry Placeholder="Термин" Completed="Editor_Completed"  Unfocused="Editor_Completed" Text="{Binding Term}">
-                                            <Entry.Style>
-                                                <Style TargetType="Entry">
-                                                    <Style.Triggers>
-                                                        <DataTrigger TargetType="Entry" Binding="{Binding Category.IsUser}" Value="false">
-                                                            <Setter Property="IsEnabled" Value="false"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Entry.Style>
-                                        </Entry>
-                                        <Entry Placeholder="Перевод" Completed="Editor_Completed" Unfocused="Editor_Completed" Text="{Binding Translation}">
-                                            <Entry.Style>
-                                                <Style TargetType="Entry">
-                                                    <Style.Triggers>
-                                                        <DataTrigger TargetType="Entry" Binding="{Binding Category.IsUser}" Value="false">
-                                                            <Setter Property="IsEnabled" Value="false"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Entry.Style>
-                                        </Entry>
+                                        <Entry Placeholder="Термин" Completed="Editor_Completed"  Unfocused="Editor_Completed" Text="{Binding Term}" IsEnabled="{Binding CanChanged}"/>
+                                        <Entry Placeholder="Перевод" Completed="Editor_Completed" Unfocused="Editor_Completed" Text="{Binding Translate}" IsEnabled="{Binding CanChanged}"/>
                                     </StackLayout>
-                                    <ImageButton WidthRequest="30" Source="krest.png" HeightRequest="30" Margin="30,-10,0,0" x:Name="BtnDel" Clicked="BtnDel_Clicked" VerticalOptions="Start" HorizontalOptions="End" BackgroundColor="#00000000">
-                                        <ImageButton.Style>
-                                            <Style TargetType="ImageButton">
-                                                <Style.Triggers>
-                                                    <DataTrigger TargetType="ImageButton" Binding="{Binding Category.IsUser}" Value="false">
-                                                        <Setter Property="IsVisible" Value="false"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </ImageButton.Style>
-                                    </ImageButton>
+                                    <ImageButton WidthRequest="30" Source="krest.png" HeightRequest="30" Margin="30,-10,0,0" x:Name="BtnDel" Clicked="BtnDel_Clicked" VerticalOptions="Start" HorizontalOptions="End" BackgroundColor="#00000000" IsVisible="{Binding  CanChanged}"/>
                                 </Grid>
                             </Frame>
                         </DataTemplate>
@@ -66,7 +36,7 @@
                         <Grid>
                             <Frame  WidthRequest="40" HeightRequest="40" BackgroundColor="#575757" CornerRadius="40" x:Name="BtnIn" VerticalOptions="Center" HorizontalOptions="Center"  Margin="15">
                                 <Grid>
-                                    <!--<Button Clicked="Button_Clicked" x:Name="CreateWordBut" Opacity="0"/>-->
+                                    <Button Clicked="CreateWordBut_Clicked" x:Name="CreateWordBut" Opacity="0"/>
                                     <Rectangle WidthRequest="40" HeightRequest="10" RadiusX="5" RadiusY="5" Fill="DimGray" VerticalOptions="Center" HorizontalOptions="Center"/>
                                     <Rectangle WidthRequest="10" HeightRequest="40" RadiusX="5" RadiusY="5" Fill="DimGray" VerticalOptions="Center" HorizontalOptions="Center"/>
                                 </Grid>

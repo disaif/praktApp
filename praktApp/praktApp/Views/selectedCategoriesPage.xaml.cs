@@ -21,6 +21,7 @@ namespace praktApp.Views
         }
         protected override void OnAppearing()
         {
+            collectionCategoryView.SelectedItem = null;
             collectionCategoryView.ItemsSource = Global.completeCategoriesUser;
             base.OnAppearing();
         }
@@ -31,26 +32,20 @@ namespace praktApp.Views
         }
        
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void CreateNewCategoryButton_Clicked(object sender, EventArgs e)
         {
-         //   await Navigation.PushAsync(new CreateOrUpdateCategoryPage(false));
+            await Navigation.PushAsync(new CreateOrUpdateCategoryPage());
         }
 
         private async void collectionCategoryView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            /*
-            if (e.CurrentSelection != null)
-                await Navigation.PushAsync(new CreateOrUpdateCategoryPage(true, (Category)e.CurrentSelection.FirstOrDefault()));
-            */
+            if (collectionCategoryView.SelectedItem != null)
+                await Navigation.PushAsync(new CreateOrUpdateCategoryPage((CompleteCategory)e.CurrentSelection.FirstOrDefault()));
         }
 
-        private void searchTB_TextChanged(object sender, TextChangedEventArgs e)
+        private void SearchTB_TextChanged(object sender, TextChangedEventArgs e)
         {
-            collectionCategoryView.ItemsSource = Global.completeCategoriesUser.Where(p => p.Category.Name.ToLower().Contains(searchTB.Text.ToLower()));
-        }
-
-        private void checkboxCV_Focused(object sender, FocusEventArgs e)
-        {
+            collectionCategoryView.ItemsSource = Global.completeCategoriesUser.Where(p => p.Category.Name.ToLower().Contains(SearchTB.Text.ToLower()));
         }
     }
 }

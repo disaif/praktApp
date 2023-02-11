@@ -28,9 +28,6 @@ namespace ЛР7_ВПКС.models
         [ManyToOne]
         public Role Role { get; set; }
         [OneToMany]
-        public List<Category> Categories { get; set; }
-
-        [OneToMany]
         public List<CompleteCategory> CategoriesComlList { get; set; }
 
         [ForeignKey(typeof(Class))]

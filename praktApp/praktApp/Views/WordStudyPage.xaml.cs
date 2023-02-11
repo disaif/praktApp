@@ -7,76 +7,92 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ЛР7_ВПКС.Data;
+using ЛР7_ВПКС.models;
 
 namespace praktApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WordStudyPage : ContentPage
     {
-        /*
+
         private List<Category> categories;
-        private int currentCategory = 0;
-        private int currentWord = 0;
+        private List<CompleteCategory> completeCategoriesForStudy;
+        private int NumberCurrentCategory = 0;
+        private int NumberCurrentWordInCategory = 0;
         private bool[] isError;
         private int Counterror;
         private double step;
-        */
+
         public WordStudyPage()
         {
             InitializeComponent();
-            /*
+
+            //Отключение тулбара
             Shell.SetTabBarIsVisible(this, false);
-            categories = App.PraktDB.GetCategoryAsync().Result.Where(p => App.SaveChangedCategory.categories.Where(w => w.Id == p.Id).FirstOrDefault().flag).ToList();
+
+            completeCategoriesForStudy = Global.completeCategoriesUser.Where(x => x.IsChoose == true).ToList();
+
+            categories = ElectronicBookDB.GetContext().GetCategoriesAsync().Result.Where(x => completeCategoriesForStudy.Select(y => y.Id).Contains(x.Id)).ToList();
+            
+            // Айди категорий выполненных с ошибками
             isError = new bool[categories.Count];
-            LabelTerm.Text = categories[0].Words[0].Translation;
-            double countWord = 0;
+            LabelTerm.Text = categories[0].Words[0].Translate;
+
+            // Высчитываем шаг прогресс бара
+            int countWord = 0;
             foreach(Category category in categories)
             {
                 countWord += category.Words.Count;
             }
-            step = 1 / countWord;
+            step = 1.0 / countWord;
             EntTB.Focus();
-            */
         }
 
         private async void EntTB_Completed(object sender, EventArgs e)
         {
-            /*
-            if (EntTB.Text.ToLower().Trim(' ') == categories[currentCategory].Words[currentWord].Term.ToLower().Trim(' '))
+
+            if (EntTB.Text.ToLower().Trim(' ') == categories[NumberCurrentCategory].Words[NumberCurrentWordInCategory].Term.ToLower().Trim(' '))
             {
                 //Верно
             }
             else
             {
-                isError[currentCategory] = true;
+                isError[NumberCurrentCategory] = true;
                 Counterror++;
-                await DisplayAlert("Ошибка", "Верный термин " + categories[currentCategory].Words[currentWord].Term, "Ок");
+                await DisplayAlert("Ошибка", "Верный термин " + categories[NumberCurrentCategory].Words[NumberCurrentWordInCategory].Term, "Ок");
             }
+
             Progress.Progress += step;
-            if (currentWord == (categories[currentCategory].Words.Count - 1))
+
+            //Если было последнее слово в категории
+            if (NumberCurrentWordInCategory == (categories[NumberCurrentCategory].Words.Count - 1))
             {
-                if(currentCategory == (categories.Count - 1))
+                //Если последняя категория
+                if(NumberCurrentCategory == (categories.Count - 1))
                 {
                     int i = 0;
                     foreach(Category cat in categories)
                     {
                         if (isError[i] == false)
-                            App.SaveStudedCategory.categories.Add(cat.Id);
+                        {
+                            CompleteCategory completeCategory = completeCategoriesForStudy.FirstOrDefault(x => x.CategoryId == cat.Id);
+                            completeCategory.IsStuded = true;
+                            await ElectronicBookDB.GetContext().SaveComplCatAsync(completeCategory);
+                        }
                         i++;
                     }
-                    SaveClass.serialize(SaveClass.pathStCa);
                     await DisplayAlert("Обучение завершено", $"Категорий без ошибок { isError.Where(p => p == false).ToArray().Count()}.\nВсего ошибок:{Counterror}", "Ок");
                     await Shell.Current.GoToAsync("..");
                     return;
                 }
-                currentWord = -1;
-                currentCategory++;
+                NumberCurrentWordInCategory = -1;
+                NumberCurrentCategory++;
             }
-            currentWord++;
-            LabelTerm.Text = categories[currentCategory].Words[currentWord].Translation;
+            NumberCurrentWordInCategory++;
+            LabelTerm.Text = categories[NumberCurrentCategory].Words[NumberCurrentWordInCategory].Translate;
             EntTB.Text = "";
             EntTB.Focus();
-            */
         }
     }
 }

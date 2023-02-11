@@ -19,6 +19,9 @@ namespace ЛР7_ВПКС.models
         public string Name { get; set; }
         [NotNull]
         public string Papaname { get; set; }
+
+        public string FIO { get { return $"{Fullname} {Name} {Papaname}"; } }
+
         [NotNull]
         public string Email { get; set; }
         [NotNull]

@@ -61,12 +61,11 @@ namespace ЛР7_ВПКС.Data
         {
             db.DeleteAllAsync(category.Words).Wait();
 
-            foreach(CompleteCategory completeCategory in category.CompleteCatList)
+            foreach (CompleteCategory completeCategory in category.CompleteCatList)
             {
                 DeleteComplCatAsync(completeCategory).Wait();
                 Global.CurrentUser.CategoriesComlList.Remove(completeCategory);
             }
-
             SaveUserAsync(Global.CurrentUser);
 
             return db.DeleteAsync(category);

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using testAnd;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ЛР7_ВПКС.Data;
 
 namespace praktApp.Views
 {
@@ -17,6 +18,13 @@ namespace praktApp.Views
         {
             InitializeComponent();
             StackUserform.BindingContext = Global.CurrentUser;
+        }
+
+        protected override void OnAppearing()
+        {
+            Global.CurrentUser = ElectronicBookDB.GetContext().GetUser(Global.CurrentUser.Id);
+            StackUserform.BindingContext = Global.CurrentUser;
+            base.OnAppearing();
         }
 
         private void ExitBut_Clicked(object sender, EventArgs e)

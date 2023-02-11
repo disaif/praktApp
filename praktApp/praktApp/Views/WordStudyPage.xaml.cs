@@ -33,7 +33,7 @@ namespace praktApp.Views
 
             completeCategoriesForStudy = Global.completeCategoriesUser.Where(x => x.IsChoose == true).ToList();
 
-            categories = ElectronicBookDB.GetContext().GetCategoriesAsync().Result.Where(x => completeCategoriesForStudy.Select(y => y.Id).Contains(x.Id)).ToList();
+            categories = ElectronicBookDB.GetContext().GetCategoriesAsync().Result.Where(x => completeCategoriesForStudy.Select(y => y.CategoryId).Contains(x.Id)).ToList();
             
             // Айди категорий выполненных с ошибками
             isError = new bool[categories.Count];
@@ -58,9 +58,11 @@ namespace praktApp.Views
             }
             else
             {
-                isError[NumberCurrentCategory] = true;
-                Counterror++;
-                await DisplayAlert("Ошибка", "Верный термин " + categories[NumberCurrentCategory].Words[NumberCurrentWordInCategory].Term, "Ок");
+                if(!await DisplayAlert("Ошибка", "Верный термин " + categories[NumberCurrentCategory].Words[NumberCurrentWordInCategory].Term, "Я ответил верно", "Далее"))
+                {
+                    isError[NumberCurrentCategory] = true;
+                    Counterror++;
+                }
             }
 
             Progress.Progress += step;

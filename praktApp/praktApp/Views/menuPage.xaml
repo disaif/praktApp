@@ -17,7 +17,7 @@ BackgroundColor="#252626"
             <StackLayout Margin="0" VerticalOptions="Center" x:Name="StackUserform">
                 <StackLayout Orientation="Horizontal">
                     <Label Text="ФИО:"/>
-                    <Label Text="{Binding Path = Name}" />
+                    <Label Text="{Binding Path = FIO}" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Класс:"/>

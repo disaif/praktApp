@@ -26,7 +26,7 @@ namespace praktApp.Views
         {
             InitializeComponent();
 
-            CurrentCategory = ElectronicBookDB.GetContext().GetCategory(cat.Id);
+            CurrentCategory = ElectronicBookDB.GetContext().GetCategory(cat.CategoryId);
 
             collectionWordView.ItemsSource = CurrentCategory.Words;
 
@@ -49,9 +49,9 @@ namespace praktApp.Views
             {
                 return;
             }
-            if (CurrentCategory.Words.Count == 0)
+            if (CurrentCategory.Words.Count == 0 || string.IsNullOrWhiteSpace(CurrentCategory.Words[0].Term) || string.IsNullOrWhiteSpace(CurrentCategory.Words[0].Translate))
             {
-                if(CurrentCategory.CompleteCatList.Count != 0)
+                if(CurrentCategory.CompleteCatList != null)
                 {
                     ElectronicBookDB.GetContext().DeleteCategoryAsync(CurrentCategory).Wait();
                     Global.UpdateCompleteCategoriesUser();
@@ -61,6 +61,12 @@ namespace praktApp.Views
             }
             if (CurrentCategory.CompleteCatList != null)
             {
+                foreach (CompleteCategory completeCategory in CurrentCategory.CompleteCatList)
+                {
+                    completeCategory.IsStuded = false;
+                    await ElectronicBookDB.GetContext().SaveComplCatAsync(completeCategory);
+                }
+
                 ElectronicBookDB.GetContext().SaveCategoryAsync(CurrentCategory).Wait();
                 Global.UpdateCompleteCategoriesUser();
                 return;

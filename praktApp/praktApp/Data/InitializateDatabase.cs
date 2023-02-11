@@ -73,6 +73,14 @@ namespace praktApp.Data
                 await DB.SaveClassAsync(@class);
                 await DB.SaveRoleAsync(role);
 
+                User user3 = new User() { Name = "Диляра", Fullname = "Сайфутдинова", Papaname = "Искандеровна", Email = "disaif@mail.ru", Password = "123" };
+                await DB.SaveUserAsync(user3);
+
+                @class.Users.Add(user3);
+                role.Users.Add(user3);
+                await DB.SaveClassAsync(@class);
+                await DB.SaveRoleAsync(role);
+
                 User user2 = new User() { Name = "Алексей", Fullname = "Еркашов", Papaname = "Сергеевич", Email = "alex@mail.ru", Password = "12345" };
                 await DB.SaveUserAsync(user2);
 
@@ -82,15 +90,22 @@ namespace praktApp.Data
                 await DB.SaveClassAsync(@class);
                 await DB.SaveRoleAsync(role2);
 
-                CompleteCategory completeCategory1 = new CompleteCategory() {Category = category1, User = user1, IsChoose = true, IsStuded = false, CanChange = false };
+                CompleteCategory completeCategory1 = new CompleteCategory() {Category = category1, User = user1, IsChoose = false, IsStuded = false, CanChange = false };
                 CompleteCategory completeCategory2 = new CompleteCategory() {Category = category2, User = user1, IsChoose = false, IsStuded = false, CanChange = false };
+
+                CompleteCategory completeCategory3 = new CompleteCategory() { Category = category1, User = user3, IsChoose = false, IsStuded = false, CanChange = false };
+                CompleteCategory completeCategory4 = new CompleteCategory() { Category = category2, User = user3, IsChoose = false, IsStuded = false, CanChange = false };
 
                 await DB.SaveComplCatAsync(completeCategory1);
                 await DB.SaveComplCatAsync(completeCategory2);
+                await DB.SaveComplCatAsync(completeCategory3);
+                await DB.SaveComplCatAsync(completeCategory4);
 
                 user1.CategoriesComlList = new List<CompleteCategory>() { completeCategory1, completeCategory2 };
+                user3.CategoriesComlList = new List<CompleteCategory>() { completeCategory3, completeCategory4 };
 
                 await DB.SaveUserAsync(user1);
+                await DB.SaveUserAsync(user3);
             }
             else { }
         }

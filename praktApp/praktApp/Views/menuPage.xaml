@@ -28,10 +28,20 @@ BackgroundColor="#252626"
                     <Label Text="{Binding Path = Role.Name}" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
+                    <StackLayout.Triggers>
+                        <DataTrigger TargetType="StackLayout"  Binding="{Binding Path= RoleId}" Value="2">
+                            <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
+                    </StackLayout.Triggers>
                     <Label Text="Количество изученных категорий:"/>
                     <Label Text="{Binding Path = StudedCategory}" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
+                    <StackLayout.Triggers>
+                        <DataTrigger TargetType="StackLayout"  Binding="{Binding Path= RoleId}" Value="2">
+                            <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
+                    </StackLayout.Triggers>
                     <Label Text="Количество изучаемых категорий:"/>
                     <Label Text="{Binding Path = ChooseCategory}" />
                 </StackLayout>

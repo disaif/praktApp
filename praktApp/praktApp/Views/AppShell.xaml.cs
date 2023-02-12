@@ -17,6 +17,16 @@ namespace testAnd
         public AppShell()
         {
             InitializeComponent();
+            if(Global.CurrentUser.RoleId == 2)
+            {
+                TabGlossary.IsVisible = false;
+                MenuTab.IsVisible = false;
+            }
+            else
+            {
+                ClassTab.IsVisible = false;
+                CategoryTab.IsVisible = false;
+            }
         }
     }
 }

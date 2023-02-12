@@ -25,13 +25,29 @@
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Frame Grid.Row="0" Grid.Column="0"  Margin="10">
+                                    <Frame Grid.Row="0" Grid.Column="0" Margin="10" >
+                                        <Frame.Triggers>
+                                            <DataTrigger TargetType="Frame" Binding="{Binding Path= User.RoleId}" Value="2">
+                                                <Setter Property="Grid.ColumnSpan" Value="2"/>
+                                            </DataTrigger>
+                                        </Frame.Triggers>
                                         <StackLayout>
                                             <Label Text="{Binding Category.Name}" />
-                                            <Label Text="{Binding IsStudedText}" FontSize="12"/>
+                                            <Label Text="{Binding IsStudedText}" FontSize="12">
+                                                <Label.Triggers>
+                                                    <DataTrigger TargetType="Label" Binding="{Binding Path= User.RoleId}" Value="2">
+                                                        <Setter Property="IsVisible" Value="false"/>
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+                                            </Label>
                                         </StackLayout>
                                     </Frame>
                                     <Frame Grid.Row="0" Grid.Column="1" Margin="0,10,10,10 ">
+                                        <Frame.Triggers>
+                                            <DataTrigger TargetType="Frame" Binding="{Binding Path= User.RoleId}" Value="2">
+                                                <Setter Property="IsVisible" Value="false"/>
+                                            </DataTrigger>
+                                        </Frame.Triggers>
                                         <CheckBox HorizontalOptions="Center" IsChecked="{Binding IsChoose}" x:Name="checkboxCV" Color="#DDA0DD" VerticalOptions="Center" Grid.Column="2" CheckedChanged ="CheckBox_CheckedChanged">
                                         </CheckBox>
                                     </Frame>

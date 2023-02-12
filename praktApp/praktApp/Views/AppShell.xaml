@@ -14,12 +14,22 @@
         </ResourceDictionary>
     </Shell.Resources>
     <TabBar x:Name="TabSh">
-        <Tab Title="Меню" Icon="icon_study.png">
+        
+        <Tab Title="Меню" Icon="icon_study.png" x:Name="MenuTab">
             <ShellContent ContentTemplate="{DataTemplate views:StudyPage}"/>
         </Tab>
-        <Tab Title="Словарь" Icon="icon_book.png">
+        <Tab Title="Словарь" Icon="icon_book.png" x:Name="TabGlossary">
             <ShellContent ContentTemplate="{DataTemplate views:GlossaryPage}"/>
         </Tab>
+
+
+        <Tab Title="Категории" Icon="icon_study.png" x:Name="CategoryTab">
+            <ShellContent ContentTemplate="{DataTemplate views:SelectedCategoriesPage}"/>
+        </Tab>
+        <Tab Title="Класс" Icon="icon_book.png" x:Name="ClassTab">
+            <ShellContent ContentTemplate="{DataTemplate views:ClassListPage}"/>
+        </Tab>
+        
         <Tab Title="Личный кабинет" Icon="icon_menu.png">
             <ShellContent ContentTemplate="{DataTemplate views:MenuPage}"/>
         </Tab>

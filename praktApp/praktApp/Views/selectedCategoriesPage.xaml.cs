@@ -15,9 +15,11 @@ namespace praktApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SelectedCategoriesPage : ContentPage
     {
+        public int idRole;
         public SelectedCategoriesPage()
         {
             InitializeComponent();
+            idRole = Global.CurrentUser.RoleId;
         }
         protected override void OnAppearing()
         {

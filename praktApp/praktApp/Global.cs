@@ -44,7 +44,7 @@ namespace praktApp
         {
             int id = JsonConvert.DeserializeObject<int>(File.ReadAllText(CurUserPath));
             CurrentUser = ElectronicBookDB.GetContext().GetUsersAsync().Result.FirstOrDefault(i => i.Id == id);
-            UpdateCompleteCategoriesUser();
+            completeCategoriesUser = ElectronicBookDB.GetContext().GetComplCatAsync().Result.Where(x => CurrentUser.CategoriesComlList.Select(p => p.Id).Contains(x.Id)).ToList();
         }
 
         public static void DeleteFileUserId()
@@ -60,7 +60,7 @@ namespace praktApp
         public static void UpdateListWords()
         {
             ChooseCategoriesWords = new List<Word>();
-            List<Category> categories = ElectronicBookDB.GetContext().GetCategoriesAsync().Result.Where(x => completeCategoriesUser.FirstOrDefault(y => y.Id == x.Id && y.IsChoose) != null).ToList();
+            List<Category> categories = ElectronicBookDB.GetContext().GetCategoriesAsync().Result.Where(x => completeCategoriesUser.FirstOrDefault(y => y.CategoryId == x.Id && y.IsChoose) != null).ToList();
             foreach (Category category in categories)
             {
                 ChooseCategoriesWords.AddRange(category.Words);

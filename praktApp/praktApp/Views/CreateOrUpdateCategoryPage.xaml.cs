@@ -15,6 +15,7 @@ namespace praktApp.Views
     {
         private Category CurrentCategory = new Category() { Words = new List<Word>(){ new Word() {Translate = "",Term = ""} } };
         private Word CurrentWord;
+        private bool IsChanged = false;
         public CreateOrUpdateCategoryPage()
         {
             InitializeComponent();
@@ -45,7 +46,7 @@ namespace praktApp.Views
         protected async override void OnDisappearing()
         {
 
-            if (CurrentCategory == null)
+            if (CurrentCategory == null || !IsChanged)
             {
                 return;
             }
@@ -61,7 +62,8 @@ namespace praktApp.Views
             }
             if (CurrentCategory.CompleteCatList != null)
             {
-                foreach (CompleteCategory completeCategory in CurrentCategory.CompleteCatList)
+                List<CompleteCategory> completeCategories = ElectronicBookDB.GetContext().GetComplCatAsync().Result.Where(P => P.CategoryId == CurrentCategory.Id).ToList();
+                foreach(CompleteCategory completeCategory in completeCategories)
                 {
                     completeCategory.IsStuded = false;
                     await ElectronicBookDB.GetContext().SaveComplCatAsync(completeCategory);
@@ -82,16 +84,36 @@ namespace praktApp.Views
         {
             ElectronicBookDB.GetContext().SaveCategoryAsync(CurrentCategory).Wait();
             CurrentCategory = ElectronicBookDB.GetContext().GetCategoriesAsync().Result.Last();
-            CompleteCategory completeCategory = new CompleteCategory() { CanChange = true, User = Global.CurrentUser, Category = CurrentCategory, IsChoose = false, IsStuded = false };         
-            ElectronicBookDB.GetContext().SaveComplCatAsync(completeCategory).Wait();
 
-            CurrentCategory.CompleteCatList.Add(completeCategory);
-            ElectronicBookDB.GetContext().SaveCategoryAsync(CurrentCategory).Wait();
+            if(Global.CurrentUser.RoleId == 1)
+            {
+                CompleteCategory completeCategory = new CompleteCategory() { CanChange = true, User = Global.CurrentUser, Category = CurrentCategory, IsChoose = false, IsStuded = false };
+                ElectronicBookDB.GetContext().SaveComplCatAsync(completeCategory).Wait();
 
-            Global.CurrentUser.CategoriesComlList.Add(completeCategory);
-            ElectronicBookDB.GetContext().SaveUserAsync(Global.CurrentUser).Wait();
+                CurrentCategory.CompleteCatList.Add(completeCategory);
+                ElectronicBookDB.GetContext().SaveCategoryAsync(CurrentCategory).Wait();
 
-            Global.UpdateCompleteCategoriesUser();
+                Global.CurrentUser.CategoriesComlList.Add(completeCategory);
+                ElectronicBookDB.GetContext().SaveUserAsync(Global.CurrentUser).Wait();
+            }
+            else
+            {
+                foreach(User user in ElectronicBookDB.GetContext().GetUsersAsync().Result.Where(p => p.ClassId == Global.CurrentUser.ClassId))
+                {
+                    CompleteCategory completeCategory = new CompleteCategory() { CanChange = false, User = user, Category = CurrentCategory, IsChoose = false, IsStuded = false };
+                    if (user.Id == Global.CurrentUser.Id)
+                        completeCategory.CanChange = true;
+                    ElectronicBookDB.GetContext().SaveComplCatAsync(completeCategory).Wait();
+
+                    CurrentCategory.CompleteCatList.Add(completeCategory);
+
+
+                    user.CategoriesComlList.Add(completeCategory);
+                    ElectronicBookDB.GetContext().SaveUserAsync(user).Wait();
+                }
+                ElectronicBookDB.GetContext().SaveCategoryAsync(CurrentCategory).Wait();
+            }
+            Global.DeserealizateUser();
         }
 
         private async void Editor_Completed(object sender, EventArgs e)
@@ -125,6 +147,7 @@ namespace praktApp.Views
                 }
             }
 
+            IsChanged = true;
             ElectronicBookDB.GetContext().SaveWordAsync(CurrentWord).Wait();
 
             if (BtnIn.IsVisible)
@@ -158,6 +181,7 @@ namespace praktApp.Views
             CurrentWord = (sender as ImageButton).BindingContext as Word;
             if (await DisplayAlert("Подтвердить действие", "Вы хотите удалить слово?", "Да", "Нет"))
             {
+                IsChanged = true;
                 CurrentCategory.Words.Remove(CurrentWord);
                 ElectronicBookDB.GetContext().DeleteWordAsync(CurrentWord).Wait();
                 collectionWordView.ItemsSource = null;
